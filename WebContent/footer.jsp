@@ -1,6 +1,4 @@
-   
-</section>
-			</div>
+
 		</div>
 	<div style="clear:both;"><p>&nbsp;</p></div>
 		<div id="my-bottom1">

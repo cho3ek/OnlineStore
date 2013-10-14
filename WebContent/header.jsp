@@ -53,11 +53,13 @@
 				<li class="linkk"><a href="product.jsp">Sportswear</a></li>
 				<li class="linkk"><a href="product.jsp">Kids clothing</a></li>
 				<li class="linkk"><a href="product.jsp">Man & woman fashion</a></li>
-				<li class="linkk"><a href="product.jsp">Informations</a></li>
+				<li class="linkk"><a href="exampleSite.jsp">Informations</a></li>
 			</ul>
 		</header>
 		
+		
+		
+		
 		<div class="my-page-wrap">	
-			<div id="my-mainbody-columns" class="my-content-no-sidebar" style="padding-top:200px;">			
-				<section id="my-mainbody">
+		<div style="clear:both;height:210px;"></div>
 				

@@ -1,6 +1,6 @@
 <jsp:include page="header.jsp" />
 
-TEST<br>
+This is just example page with some informations<br>
 				<h2>test2</h2>
 				test<br/>
 				<h3>test4</h3>
