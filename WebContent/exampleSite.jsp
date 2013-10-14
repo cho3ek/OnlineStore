@@ -1,4 +1,7 @@
-<jsp:include page="header.jsp" />
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+    
+    <jsp:include page="header.jsp" />
 
 This is just example page with some informations<br>
 				<h2>test2</h2>

@@ -1,4 +1,6 @@
-<jsp:include page="header.jsp" />
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+    <jsp:include page="header.jsp" />
 
 
 		<div id="product-categories" class="box">
@@ -22,7 +24,7 @@
 						<a href="#" class="product-overlay">
 							<img width="234" height="345" src="images/products/polo_1.jpg" alt="">
 							<h3>Polo version 1</h3>
-							<span class="price">?32.67</span>
+							<span class="price">€32.67</span>
 						</a>
 					</li>						
 					
@@ -30,7 +32,7 @@
 						<a href="#" class="product-overlay">
 							<img width="234" height="345" src="images/products/polo_2.jpg" alt="">
 							<h3>Polo version 2</h3>
-							<span class="price">?33.88</span>
+							<span class="price">€33.88</span>
 						</a>
 					</li>
 			
@@ -38,7 +40,7 @@
 						<a href="#" class="product-overlay">
 							<img width="234" height="345" src="images/products/polo_3.jpg" alt="">
 							<h3>Polo version 3</h3>
-							<span class="price">?43.56</span>
+							<span class="price">€43.56</span>
 						</a>	
 					</li>
 						
@@ -46,7 +48,7 @@
 						<a href="#" class="product-overlay">
 							<img width="234" height="345" src="images/products/polo_1.jpg" alt="">
 							<h3>Polo version 1</h3>
-							<span class="price">?32.67</span>
+							<span class="price">€32.67</span>
 						</a>
 					</li>						
 					
@@ -54,7 +56,7 @@
 						<a href="#" class="product-overlay">
 							<img width="234" height="345" src="images/products/polo_2.jpg" alt="">
 							<h3>Polo version 2</h3>
-							<span class="price">?33.88</span>
+							<span class="price">€33.88</span>
 						</a>
 					</li>
 			
@@ -62,7 +64,7 @@
 						<a href="#" class="product-overlay">
 							<img width="234" height="345" src="images/products/polo_3.jpg" alt="">
 							<h3>Polo version 3</h3>
-							<span class="price">?43.56</span>
+							<span class="price">€43.56</span>
 						</a>	
 					</li>
 					

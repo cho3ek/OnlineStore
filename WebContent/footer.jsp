@@ -1,4 +1,6 @@
-
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+    
 		</div>
 	<div style="clear:both;"><p>&nbsp;</p></div>
 		<div id="my-bottom1">
@@ -10,7 +12,7 @@
 							<p><b>Universidad Carlos III de Madrid</b></p>
 							<p>Project: <i>Computing Technologies for the Web</i></p>
 							<p>Av de la Universidad, 30</p>
-							<p>Leganés, España</p>
+							<p>LeganÃ©s, EspaÃ±a</p>
 							<p>(+34) 916 24 95 00</p>
 						</address>
 					</div>
