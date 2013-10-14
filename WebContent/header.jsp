@@ -30,7 +30,7 @@
 		<header id="my-head" class="my-absolute-head">
 			<div id="main-menu"></div>						
 			<!--logo header-->
-			<h2><a href="#" class="cssLogo">UC3Mshop</small></a></h2>
+			<h2><a href="index.jsp" class="cssLogo">UC3Mshop</small></a></h2>
 			<ul id="top-menu" class="menu my_normal">
 				<li><a href="#">My cart</a></li>
 				<li><a href="#">Registration</a></li>
@@ -48,12 +48,12 @@
 			</div>
 						
 			<ul id="main-menu" class="menu my_normal">
-				<li class="linkk"><a href="#">Home</a></li>
-				<li class="linkk"><a href="#">Young fashion</a></li>
-				<li class="linkk"><a href="#">Sportswear</a></li>
-				<li class="linkk"><a href="#">Kids clothing</a></li>
-				<li class="linkk"><a href="#">Man & woman fashion</a></li>
-				<li class="linkk"><a href="#">Informations</a></li>
+				<li class="linkk"><a href="index.jsp">Home</a></li>
+				<li class="linkk"><a href="product.jsp">Young fashion</a></li>
+				<li class="linkk"><a href="product.jsp">Sportswear</a></li>
+				<li class="linkk"><a href="product.jsp">Kids clothing</a></li>
+				<li class="linkk"><a href="product.jsp">Man & woman fashion</a></li>
+				<li class="linkk"><a href="product.jsp">Informations</a></li>
 			</ul>
 		</header>
 		

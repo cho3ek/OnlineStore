@@ -1,5 +1,5 @@
 <jsp:include page="header.jsp" />
-<!-- just a test -->
+
 <div id="widget_my_news_blocks-2" class="box  widget_my_news_bolocks">
 						<div class="my-news-blocks active" data-cols="2">
 							<figure class="inverse">
