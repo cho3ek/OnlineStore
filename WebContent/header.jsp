@@ -4,7 +4,7 @@
     <!DOCTYPE html 
       PUBLIC "-//W3C//DTD HTML 4.01//EN"
       "http://www.w3.org/TR/html4/strict.dtd">
-	  
+
 <html>
 <head>
 	<title>UC3M - Online Store - Computing Technologies for the Web</title>
@@ -24,7 +24,7 @@
 			}
 	</style>
 </head>
-	
+
 <body class="home">
 	<div class="my-page-wrapper my-page">
 		<header id="my-head" class="my-absolute-head">
@@ -46,20 +46,19 @@
 					</form>
 				</div>	
 			</div>
-						
+
 			<ul id="main-menu" class="menu my_normal">
 				<li class="linkk"><a href="index.jsp">Home</a></li>
-				<li class="linkk"><a href="product.jsp">Young fashion</a></li>
-				<li class="linkk"><a href="product.jsp">Sportswear</a></li>
-				<li class="linkk"><a href="product.jsp">Kids clothing</a></li>
-				<li class="linkk"><a href="product.jsp">Man & woman fashion</a></li>
-				<li class="linkk"><a href="exampleSite.jsp">Informations</a></li>
+				<li class="linkk"><a href="YoungMain.jsp">Young fashion</a></li>
+				<li class="linkk"><a href="SportsMain.jsp">Sportswear</a></li>
+				<li class="linkk"><a href="KidsMain.jsp">Kids clothing</a></li>
+				<li class="linkk"><a href="ManWomanMain.jsp">Man & woman fashion</a></li>
+				<li class="linkk"><a href="product.jsp">Informations</a></li>
 			</ul>
 		</header>
-		
-		
-		
-		
+
+
+
+
 		<div class="my-page-wrap">	
 		<div style="clear:both;height:210px;"></div>
-				

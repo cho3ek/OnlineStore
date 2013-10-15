@@ -13,7 +13,7 @@
 									<h3>
 										<strong>Young</strong> fashion
 									</h3>
-									<a href="#" title="Young Fashion" class="my-image show  active">More details</a>
+									<a href="YoungMain.jsp" title="Young Fashion" class="my-image show  active">More details</a>
 								</figcaption>
 							</figure>
 							<figure>
@@ -21,7 +21,7 @@
 								<div class="my-img-overlay"></div>
 								<figcaption>
 									<h3><strong>Sports</strong>wear</h3>
-									<a href="#" title="Sportswear" class="my-image show  active">More details</a>
+									<a href="SportsMain.jsp" title="Sportswear" class="my-image show  active">More details</a>
 								</figcaption>
 							</figure>
 							<figure>
@@ -29,7 +29,7 @@
 								<div class="my-img-overlay"></div>
 								<figcaption>
 									<h3><strong>Kids</strong> Clothing</h3>
-									<a href="#" title="Kids Clothing" class="my-image show ">More details</a>
+									<a href="KidsMain.jsp" title="Kids Clothing" class="my-image show ">More details</a>
 								</figcaption>
 							</figure>
 							<figure class="inverse">
@@ -37,12 +37,12 @@
 								<div class="my-img-overlay"></div>
 								<figcaption>
 									<h3><strong>Man & Woman</strong></h3>
-									<a href="#" title="Man & Woman fashion" class="my-image show ">More details</a>
+									<a href="ManWomanMain.jsp" title="Man & Woman fashion" class="my-image show ">More details</a>
 								</figcaption>
 							</figure>
 						</div>
 					</div>
 				</section>
 			</div>
-					
+
 <jsp:include page="footer.jsp" />
