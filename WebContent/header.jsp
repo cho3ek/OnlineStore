@@ -53,7 +53,7 @@
 				<li class="linkk"><a href="SportsMain.jsp">Sportswear</a></li>
 				<li class="linkk"><a href="KidsMain.jsp">Kids clothing</a></li>
 				<li class="linkk"><a href="ManWomanMain.jsp">Man & woman fashion</a></li>
-				<li class="linkk"><a href="product.jsp">Informations</a></li>
+				<li class="linkk"><a href="category.jsp">Informations</a></li>
 			</ul>
 		</header>
 

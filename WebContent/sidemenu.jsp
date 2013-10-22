@@ -5,16 +5,16 @@
       <ul>
          <li class='has-sub'><a href='#'><span>Boys</span></a>
             <ul>
-               <li><a href='BoysPants.jsp'><span>Pants</span></a></li>
-               <li><a href='BoysTshirts.jsp'><span>T-shirts</span></a></li>
-               <li class='last'><a href='BoysCoats.jsp'><span>Coats</span></a></li>
+               <li><a href='#'><span>Pants</span></a></li>
+               <li><a href='#'><span>T-shirts</span></a></li>
+               <li class='last'><a href='#'><span>Coats</span></a></li>
             </ul>
          </li>
          <li class='has-sub'><a href='#'><span>Girls</span></a>
             <ul>
-               <li><a href='GirlsDresses.jsp'><span>Dresses</span></a></li>
-               <li><a href='GirlsTShirts.jsp'><span>T-shirts</span></a></li>
-               <li class='last'><a href='GirlsCoats.jsp'><span>Coats</span></a></li>
+               <li><a href='#'><span>Dresses</span></a></li>
+               <li><a href='#'><span>T-shirts</span></a></li>
+               <li class='last'><a href='#'><span>Coats</span></a></li>
             </ul>
          </li>
       </ul>
@@ -23,16 +23,16 @@
       <ul>
          <li class='has-sub'><a href='#'><span>For him</span></a>
             <ul>
-               <li><a href='YoungmSweaters.jsp'><span>Sweaters</span></a></li>
-               <li><a href='YoungmJeans.jsp'><span>Jeans</span></a></li>
-               <li class='last'><a href='YoungmTshirts.jsp'><span>T-shirts</span></a></li>
+               <li><a href='#'><span>Sweaters</span></a></li>
+               <li><a href='#'><span>Jeans</span></a></li>
+               <li class='last'><a href='#'><span>T-shirts</span></a></li>
             </ul>
          </li>
          <li class='has-sub'><a href='#'><span>For her</span></a>
             <ul>
-               <li><a href='YoungwSweaters.jsp'><span>Sweaters</span></a></li>
-               <li><a href='YoungwSkirts.jsp'><span>Skirts</span></a></li>
-               <li class='last'><a href='YoungwShirts.jsp'><span>Shirts</span></a></li>
+               <li><a href='#'><span>Sweaters</span></a></li>
+               <li><a href='#'><span>Skirts</span></a></li>
+               <li class='last'><a href='#'><span>Shirts</span></a></li>
             </ul>
          </li>
       </ul>
@@ -41,16 +41,16 @@
       <ul>
          <li class='has-sub'><a href='#'><span>Men</span></a>
             <ul>
-               <li><a href='ManSuit.jsp'><span>Suits</span></a></li>
-               <li><a href='MansJeans.jsp'><span>Jeans</span></a></li>
-               <li class='last'><a href='MansShirts.jsp'><span>Shirts</span></a></li>
+               <li><a href='#'><span>Suits</span></a></li>
+               <li><a href='#'><span>Jeans</span></a></li>
+               <li class='last'><a href='#'><span>Shirts</span></a></li>
             </ul>
          </li>
          <li class='has-sub'><a href='#'><span>Women</span></a>
             <ul>
-               <li><a href='WomansDresses.jsp'><span>Dresses</span></a></li>
-               <li><a href='WomansJeans.jsp'><span>Jeans</span></a></li>
-               <li class='last'><a href='WomansComplements.jsp'><span>Complements</span></a></li>
+               <li><a href='#'><span>Dresses</span></a></li>
+               <li><a href='#'><span>Jeans</span></a></li>
+               <li class='last'><a href='#'><span>Complements</span></a></li>
             </ul>
          </li>
       </ul>

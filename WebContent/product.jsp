@@ -2,74 +2,51 @@
     pageEncoding="utf-8"%>
     <jsp:include page="header.jsp" />
 
+<jsp:include page="sidemenu2.jsp" />
+		
+		<table>
+			<tr>
+				<td class="product-foto">
+				<img src="images/products/polo_1.jpg">
+				</td>
+				<td>
+				<h1>Man Polo nr 1</h1><br/>&nbsp;<br/>
+					<p>Price:&nbsp;&nbsp; <a class="product-price">€ 237,16</a><br/>
+			<small>Available sizes: <b>S, M, L, XL</b></small></p>
+			
+			<br/>&nbsp;<br/>
+																										
+													<label>Quantity: </label>
+													
+													<span class="quantity-box">
+													<input type="text" name="quantity[]" onblur="check(this);" value="1" style="width:40px;">
+													
+													</span>
+													
+																																							<span class="addtocart-button">
+														<input type="submit" name="add-to-cart" class="add-to-cart" value="Add to Cart" title="Add to Cart">													</span>
+																										
+											
+			
+				</td>
+			</tr>
+		</table>
+		
+		
+		<div class="product-description">
+			<h3>Product description</h3><hr><p>Introducing  the latest prep looks, ready just in time for rowing season. 
+			Sporting stripes, burnt hues and preppy checks team up with quilted outerwear for action on the water.</strong></p>
+<ul>
+<li>Machine Wash 30°C Gentle</li>
+<li>Non-Chlorine Bleach When Needed</li>
+<li>Iron Low Heat</li>
+<li>Dryclean Any Solvent Except Trichloroethylene</li>
+<li>50% Rayon, 50% Cotton Machine Wash 30°C Gentle.</li>
+</ul>
 
-		<div id="product-categories" class="box">
-			<h3 class="box-title">Categories</h3>
-				<ul class="product-categories">
-					<li class="cat-item"><a href="#">Bags</a></li>
-					<li class="cat-item"><a href="#">Blouses &amp; Shirts</a></li>
-					<li class="cat-item"><a href="#">Jackets-Coats</a></li>
-					<li class="cat-item"><a href="#">Men's Polos</a></li>
-					<li class="cat-item"><a href="#">Shoes</a></li>
-					<li class="cat-item"><a href="#">T-Shirt's</a></li>
-					<li class="cat-item"><a href="#">Winter Jackets</a></li>
-				</ul>
-			</div>
-			
-			
-			<div id="my-mainbody-columns" class="with-menu">			
-				<h3 class="box-title" style="margin-bottom:40px;margin-left:30px;">Men's Polos</h3>
-				<ul class="products">
-					<li class="product">									
-						<a href="#" class="product-overlay">
-							<img width="234" height="345" src="images/products/polo_1.jpg" alt="">
-							<h3>Polo version 1</h3>
-							<span class="price">€32.67</span>
-						</a>
-					</li>						
-					
-					<li class="product">
-						<a href="#" class="product-overlay">
-							<img width="234" height="345" src="images/products/polo_2.jpg" alt="">
-							<h3>Polo version 2</h3>
-							<span class="price">€33.88</span>
-						</a>
-					</li>
-			
-					<li class="product">
-						<a href="#" class="product-overlay">
-							<img width="234" height="345" src="images/products/polo_3.jpg" alt="">
-							<h3>Polo version 3</h3>
-							<span class="price">€43.56</span>
-						</a>	
-					</li>
-						
-					<li class="product">									
-						<a href="#" class="product-overlay">
-							<img width="234" height="345" src="images/products/polo_1.jpg" alt="">
-							<h3>Polo version 1</h3>
-							<span class="price">€32.67</span>
-						</a>
-					</li>						
-					
-					<li class="product">
-						<a href="#" class="product-overlay">
-							<img width="234" height="345" src="images/products/polo_2.jpg" alt="">
-							<h3>Polo version 2</h3>
-							<span class="price">€33.88</span>
-						</a>
-					</li>
-			
-					<li class="product">
-						<a href="#" class="product-overlay">
-							<img width="234" height="345" src="images/products/polo_3.jpg" alt="">
-							<h3>Polo version 3</h3>
-							<span class="price">€43.56</span>
-						</a>	
-					</li>
-					
-					
-				</ul>
-			</div>
+	</div>
+	
+		
+		</div>
 				
 <jsp:include page="footer.jsp" />
