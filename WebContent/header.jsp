@@ -32,9 +32,9 @@
 			<!--logo header-->
 			<h2><a href="index.jsp" class="cssLogo">UC3Mshop</small></a></h2>
 			<ul id="top-menu" class="menu my_normal">
-				<li><a href="#">My cart</a></li>
-				<li><a href="#">Registration</a></li>
-				<li><a href="#">Login</a></li>
+				<li><a href="myCart.jsp">My cart</a></li>
+				<li><a href="registration.jsp">Registration</a></li>
+				<li><a href="login.jsp">Login</a></li>
 			</ul>			
 			<!-- search form header -->
 			<div id="my-search">
