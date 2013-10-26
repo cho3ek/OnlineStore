@@ -2,7 +2,7 @@
 <h1>Checkout</h1><br>
 <hr>
 	<form method="post" action="">
-		<h3>Billing Information:</h3>
+		<h3>Billing Informations:</h3>
 		<h5>All fields required</h5>
 		<table id="billingAddressForm" cellpadding=3>
 			<tr>

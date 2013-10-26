@@ -6,7 +6,7 @@
         <strong>Password:</strong><input type="password" name="password" value="">
         <a href="#" style="margin-right:14px">Forgot password?</a>
         <br>
-        <input style="margin-right:49px;" type="submit" class="submitButton" value="Submit">
+        <input style="margin-right:51px;" type="submit" class="submitButton" value="Submit" onclick="document.location='index.jsp';return false;">
     </form>
 </div>
 <jsp:include page="footer.jsp" />
