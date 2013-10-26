@@ -1,50 +1,67 @@
-<title>Man and Woman Fashion</title>
-<jsp:include page="header.jsp" />
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+    <jsp:include page="header.jsp" />
+<img src="images/main_man_woman.jpg" alt="" style="margin-top:-40px;margin-bottom:40px;" /><br/>
 
 
-
-<table border="0" width="99%" cellpadding="4"> 
-            <tr> 
-            <td width="20%" valign="top"> 
-<jsp:include page="sidemenu.jsp" />
-</td> 
-  
-  
-<td width="80%" valign="top"> 
-	
- <table> 
-<tr> 
-<img STYLE="WIDTH:665px; HEIGHT:280px; border:black 1px solid" SRC="images/manwoman/main.png" name="YoungMain"></div> 
-	<hr> 
- </tr>
-<div id="my-page" class="contains">
-	<div class="title">
-		<h2>Man and Woman Fashion</h2>	
-	</div>
-	<div class="boxB">
-		<div class="box">
-			<img src="images/manwoman/x.jpg" width="320" height="180" alt="" />
-			<h3>Name and price 1</h3>
-			<a href="#" class="button">Add to cart</a>
-		</div>
-		<div class="box">
-			<img src="images/manwoman/x.jpg" width="320" height="180" alt="" />
-			<h3>Name and price 2</h3>
-			<a href="#" class="button">Add to cart</a>
-		</div>
-	</div>
-	<div class="boxC">
-		<div class="box">
-			<img src="images/manwoman/x.jpg" width="320" height="180" alt="" />
-			<h3>Name and price 3</h3>
-			<a href="#" class="button">Add to cart</a>
-		</div>
-		<div class="box">
-			<img src="images/manwoman/x.jpg" width="320" height="180" alt="" />
-			<h3>Name and price 4</h3>
-			<a href="#" class="button">Add to cart</a>
-		</div>
-	</div>
-</div>
-</table> 
-</tr> 
+		<jsp:include page="sidemenu.jsp" />
+		
+		
+				<h3 class="box-title" style="margin-bottom:40px;margin-left:30px;">Woman - dresses</h3>
+				<ul class="products">
+					<li class="product">									
+						<a href="product.jsp" class="product-overlay">
+							<img width="234" height="345" src="images/manwoman/dressw1.jpg" alt="">
+							<h3>Shirt version 1</h3>
+							<span class="price">€32.67</span>
+						</a>
+					</li>						
+					
+					<li class="product">
+						<a href="product.jsp" class="product-overlay">
+							<img width="234" height="345" src="images/manwoman/dressw2.jpg" alt="">
+							<h3>Shirt version 2</h3>
+							<span class="price">€33.88</span>
+						</a>
+					</li>
+			
+					<li class="product">
+						<a href="product.jsp" class="product-overlay">
+							<img width="234" height="345" src="images/manwoman/dressw3.jpg" alt="">
+							<h3>Shirt version 3</h3>
+							<span class="price">€43.56</span>
+						</a>	
+					</li>
+					
+						<li class="product">									
+						<a href="product.jsp" class="product-overlay">
+							<img width="234" height="345" src="images/manwoman/dressw1.jpg" alt="">
+							<h3>Shirt version 1</h3>
+							<span class="price">€32.67</span>
+						</a>
+					</li>						
+					
+					<li class="product">
+						<a href="product.jsp" class="product-overlay">
+							<img width="234" height="345" src="images/manwoman/dressw2.jpg" alt="">
+							<h3>Shirt version 2</h3>
+							<span class="price">€33.88</span>
+						</a>
+					</li>
+			
+					<li class="product">
+						<a href="product.jsp" class="product-overlay">
+							<img width="234" height="345" src="images/manwoman/dressw3.jpg" alt="">
+							<h3>Shirt version 3</h3>
+							<span class="price">€43.56</span>
+						</a>	
+					</li>
+					
+						
+					
+					
+					
+				</ul>
+			</div>
+				
+<jsp:include page="footer.jsp" />

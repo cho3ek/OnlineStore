@@ -3,6 +3,7 @@
 	<name>OnlineStore</name>
 	<comment></comment>
 	<projects>
+		<project>OnlineStoreEAR</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

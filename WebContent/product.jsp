@@ -2,7 +2,7 @@
     pageEncoding="utf-8"%>
     <jsp:include page="header.jsp" />
 
-<jsp:include page="sidemenu2.jsp" />
+<jsp:include page="sidemenu.jsp" />
 		
 		<table>
 			<tr>

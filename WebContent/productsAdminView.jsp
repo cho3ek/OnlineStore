@@ -1,37 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Administrator</title>
+
+<jsp:include page="header.jsp" />
 </head>
-<jsp:include page="adminHeaderP.jsp" />
 
 
-<table border="0" width="99%" cellpadding="4"> 
-            <tr> 
-            <td width="20%" valign="top"> 
 <jsp:include page="adminSidemenu.jsp" />
-</td> 
-  
-  
-<td width="80%" valign="top"> 
-	
 
 
-<div class="title">
-	<h2>Products</h2>	
-</div>
- <ol type="1" class="lista">
- <li><h4><img src="images/Kids/pantsb1.jpg" width="94" height="65" alt="" />	Blue kids jacket <input style="float:right" type="checkbox" name="product" value="select"></h4></li><hr>
- <li><h4><img src="images/Kids/pantsb1.jpg" width="94" height="65" alt="" />	Blue kids jacket <input style="float:right" type="checkbox" name="product" value="select"></h4></li><hr>
- <li><h4><img src="images/Kids/pantsb1.jpg" width="94" height="65" alt="" />	Blue kids jacket <input style="float:right" type="checkbox" name="product" value="select"></h4></li><hr>
- <li><h4><img src="images/Kids/pantsb1.jpg" width="94" height="65" alt="" />	Blue kids jacket <input style="float:right" type="checkbox" name="product" value="select"></h4></li><hr>
- <li><h4><img src="images/Kids/pantsb1.jpg" width="94" height="65" alt="" />	Blue kids jacket <input style="float:right" type="checkbox" name="product" value="select"></h4></li><hr>
-</ol>
+	<h2 style="margin-bottom:40px;">Products</h2>	
+<input type="submit" class="admin-button" onclick="document.location='addProductForm.jsp';return false;" value="Add new product" style="position:absolute;margin-top:-80px;margin-left:200px;" />
+<table id="products-admin">
 
+<tr><td><img src="images/Kids/pantsb1.jpg" width="94" height="65" alt="" /></td>
+<td>T-shirt nr 1</td>
+<td class="tdbutton"><input type="submit" class="admin-button" value="Edit" onclick="document.location='addProductForm.jsp';return false;" /></td>
+<td class="tdbutton"><input type="submit" class="admin-button" value="Delete" /></td></tr>
+
+<tr><td><img src="images/Kids/pantsb2.jpg" width="94" height="65" alt="" /></td>
+<td>T-shirt nr 2</td>
+<td class="tdbutton"><input type="submit" class="admin-button" value="Edit" onclick="document.location='addProductForm.jsp';return false;" /></td>
+<td class="tdbutton"><input type="submit" class="admin-button" value="Delete" /></td></tr>
+
+<tr><td><img src="images/Kids/pantsb3.jpg" width="94" height="65" alt="" /></td>
+<td>T-shirt nr 3</td>
+<td class="tdbutton"><input type="submit" class="admin-button" value="Edit" onclick="document.location='addProductForm.jsp';return false;" /></td>
+<td class="tdbutton"><input type="submit" class="admin-button" value="Delete" /></td></tr>
+</table>
 
 <jsp:include page="footer.jsp" />
-</body>
-</html>

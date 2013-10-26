@@ -2,7 +2,7 @@
     pageEncoding="utf-8"%>
     <jsp:include page="header.jsp" />
 
-		<jsp:include page="sidemenu2.jsp" />
+		<jsp:include page="sidemenu.jsp" />
 		
 				<h3 class="box-title" style="margin-bottom:40px;margin-left:30px;">Men's Polos</h3>
 				<ul class="products">

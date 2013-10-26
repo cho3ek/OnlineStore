@@ -845,7 +845,42 @@ box1,
 	background: #ff7e57;
 }
 
+.admin-button {
+	-moz-border-radius: 2px;
+	-moz-transition: all .3s ease-out;
+	-o-transition: all .3s ease-out;
+	-webkit-border-radius: 2px;
+	-webkit-transition: all .3s ease-out;
+	background: #000;
+	border: none;
+	border-radius: 2px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 400;
+	height: 36px;
+	line-height: 36px;
+	margin: 0 5px 2px 2px;
+	padding: 0 15px;
+	text-align: center;
+	transition: all .3s ease-out;
+}
+
+.admin-button:hover {
+	background: #ff7e57;
+}
+
+
 .product-description {
 	margin-left:25px;
 	margin-top:50px;
+}
+
+#products-admin td {
+	width:150px;
+	vertical-align:middle;
+}
+
+.tdbutton {
+	width:40px!important;
 }

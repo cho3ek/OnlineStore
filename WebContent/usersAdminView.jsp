@@ -5,35 +5,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Administrator</title>
-<jsp:include page="adminHeaderU.jsp" />
+<jsp:include page="header.jsp" />
 </head>
 
 
-
-<table border="0" width="99%" cellpadding="4"> 
-
-            <tr> 
-            <td width="20%" valign="top"> 
 <jsp:include page="adminSidemenu.jsp" />
-</td> 
-  
-  
-<td width="80%" valign="top"> 
-	
 
 
-<div class="title">
-	<h2>Users</h2>	
-</div>
- <ol type="1" class="lista">
- <li><h4><img src="images/userImage.jpg" width="94" height="65" alt="" />	John Smith  <input style="float:right" type="checkbox" name="product" value="select"></h4></li><hr>
- <li><h4><img src="images/userImage.jpg" width="94" height="65" alt="" />	Tom Strassner <input style="float:right" type="checkbox" name="product" value="select"></h4></li><hr>
- <li><h4><img src="images/userImage.jpg" width="94" height="65" alt="" />	Karol Cholody <input style="float:right" type="checkbox" name="product" value="select"></h4></li><hr>
- <li><h4><img src="images/userImage.jpg" width="94" height="65" alt="" />	Cristian Ayerbe <input style="float:right" type="checkbox" name="product" value="select"></h4></li><hr>
- <li><h4><img src="images/userImage.jpg" width="94" height="65" alt="" />	Sonia Rodriguez <input style="float:right" type="checkbox" name="product" value="select"></h4></li><hr>
-</ol>
+	<h2 style="margin-bottom:40px;">Users</h2>	
+<input type="submit" class="admin-button" value="Delete selected" style="position:absolute;margin-top:-80px;margin-left:180px;" />
+<table id="products-admin">
 
+<tr>
+<td><img src="images/userImage.jpg" width="94" height="65" alt="" /></td>
+<td>Cristian Ayerbe</td>
+<td class="tdbutton"><input style="float:right" type="checkbox" name="product" value="select"></td>
+</tr>
+<tr>
+<td><img src="images/userImage.jpg" width="94" height="65" alt="" /></td>
+<td>Sonia Rodriguez</td>
+<td class="tdbutton"><input style="float:right" type="checkbox" name="product" value="select"></td>
+</tr>
+<tr>
+<td><img src="images/userImage.jpg" width="94" height="65" alt="" /></td>
+<td>Karol Cholody</td>
+<td class="tdbutton"><input style="float:right" type="checkbox" name="product" value="select"></td>
+</tr>
+<tr>
+<td><img src="images/userImage.jpg" width="94" height="65" alt="" /></td>
+<td>Tom Strassner</td>
+<td class="tdbutton"><input style="float:right" type="checkbox" name="product" value="select"></td>
+</tr>
+
+</table>
 
 <jsp:include page="footer.jsp" />
-</body>
-</html>
