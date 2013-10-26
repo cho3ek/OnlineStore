@@ -1,47 +1,31 @@
-<title>searchResults</title>
-<jsp:include page="header.jsp" />
-
-
-
-<table border="0" width="99%" cellpadding="4"> 
-            <tr> 
-            <td width="20%" valign="top"> 
-<jsp:include page="sidemenu.jsp" />
-</td> 
-  
-  
-<td width="80%" valign="top"> 
-	
- <table> 
-
-<div id="my-page" class="contains">
-	<div class="title">
-		<h2>Search Results</h2>	
-	</div>
-	<div class="boxB">
-		<div class="box">
-			<img src="images/Kids/tshirtb1.jpg"  width="320" height="180" alt="" />
-			<h3>Name and price </h3>
-			<a href="#" class="button">Add to cart</a>
-		</div>
-		<div class="box">
-			<img src="images/Kids/tshirtg3.jpg" width="320" height="180" alt="" />
-			<h3>Name and price </h3>
-			<a href="#" class="button">Add to cart</a>
-		</div>
-	</div>
-	<div class="boxC">
-		<div class="box">
-			<img src="images/Kids/tshirtg1.jpg"  width="320" height="180" alt="" />
-			<h3>Name and price </h3>
-			<a href="#" class="button">Add to cart</a>
-		</div>
-		<div class="box">
-			<img src="images/Kids/tshirtb2.jpg" width="320" height="180" alt="" />
-			<h3>Name and price </h3>
-			<a href="#" class="button">Add to cart</a>
-		</div>
-	</div>
-</div>
-</table> 
-</tr>  
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+    <jsp:include page="header.jsp" />
+		
+			<div id="my-mainbody-columns" class="with-menu">
+		
+										<h2>Search results: <span style="font-size:24px;"><i>coat</i></span></h2><br/>&nbsp;<br/>		
+						<a href="product.jsp" class="product-overlay">
+							<img width="104" src="images/kids/coatb1.jpg" style="float:left;padding-right:30px;padding-bottom:20px;" alt="">
+							<h4 style="margin-top:30px;">Coat version 1</h4>
+							<span class="price">32.67 euro</span>
+						</a>
+					<div style="clear:both;"></div>
+				<a href="product.jsp" class="product-overlay">
+							<img width="104" src="images/kids/coatb2.jpg" style="float:left;padding-right:30px;padding-bottom:20px;" alt="">
+							<h4 style="margin-top:30px;">Coat version 2</h4>
+							<span class="price">32.67 euro</span>
+						</a><div style="clear:both;"></div>
+				<a href="product.jsp" class="product-overlay">
+							<img width="104" src="images/kids/coatb3.jpg" style="float:left;padding-right:30px;padding-bottom:20px;" alt="">
+							<h4 style="margin-top:30px;">Coat version 3</h4>
+							<span class="price">32.67 euro</span>
+						</a><div style="clear:both;"></div>
+				<a href="product.jsp" class="product-overlay">
+							<img width="104" src="images/kids/coatb4.jpg" style="float:left;padding-right:30px;padding-bottom:20px;" alt="">
+							<h4 style="margin-top:30px;">Coat version 4</h4>
+							<span class="price">32.67 euro</span>
+						</a>
+			</div>
+				
+<jsp:include page="footer.jsp" />
