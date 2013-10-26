@@ -1,14 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login</title>
-</head>
-<body>
-	<h1>Login</h1>
-	<hr>
-</body>
-</html>
+<jsp:include page="header.jsp" />
+<div align="center">
+    <form align="right" id="loginForm" style="width: 230px;">
+        <strong>Email:</strong><input type="email" name="email" value="">
+        <br><br>
+        <strong>Password:</strong><input type="password" name="password" value="">
+        <a href="#" style="margin-right:14px">Forgot password?</a>
+        <br>
+        <input style="margin-right:49px;" type="submit" class="submitButton" value="Submit">
+    </form>
+</div>
+<jsp:include page="footer.jsp" />
