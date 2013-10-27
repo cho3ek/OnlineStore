@@ -4,11 +4,15 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
 import java.util.*;
+import javax.servlet.annotation.WebServlet;
+
+
+@WebServlet(name="SectionsController", loadOnStartup = 1, urlPatterns = {"/category","/young","/manAndWomen","/kids","/sports","informations"})
 
 public class SectionsController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private boolean debug = true;
+    private boolean debug = false;
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -25,38 +29,39 @@ public class SectionsController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-@Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-	throws ServletException, IOException {
+     
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String userPath = request.getPathInfo();
-	String[] urlParsed = userPath.split("/");
-	String url;
-	
+        String pathInfo = request.getServletPath();
+	String[] urlParsed= pathInfo.split("/");
+	String url="index", section = "";
 
-	if (debug) {System.out.println(userPath);System.out.println(urlParsed[0]); System.out.println(urlParsed[1]);}
+	if (debug) {System.out.println("pathInfo: "+pathInfo);}
 
-        if (userPath.equals("/manWomen")) {
-            
-        } else if (userPath.equals("/kids")) {
-            
-	} else if (userPath.equals("/category")) {
-          
-	} else if (userPath.equals("/sports")) {
+	if (urlParsed.length >= 2) section = urlParsed[1];
 
-	} else if (userPath.equals("/YoungMain")) {
-
+        if (section.equals("manAndWomen")) {
+            url = "ManWomanMain";
+        } else if (section.equals("kids")) {
+            url = "KidsMain";
+	} else if (section.equals("category")) {
+	    url = "category";
+	} else if (section.equals("sports")) {
+	    url = "SportsMain";
+	} else if (section.equals("young")) {
+	    url = "YoungMain";
+	} else if (section.equals("informations")) {
+	    url = "informations";
 	}
-
+	
         // use RequestDispatcher to forward request internally
-	url = userPath + ".jsp";
+	url = "/" + url + ".jsp";
 	
 	try {
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+	    this.getServletContext().getRequestDispatcher(url).forward(request, response);
         } catch (Exception e) {
 	    if(debug) System.out.println("Exception: " + e.getMessage());
-            this.getServletContext().getRequestDispatcher("index.jsp").forward(request, response);
+            this.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
             return;
 	}
     }

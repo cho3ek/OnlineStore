@@ -30,11 +30,11 @@
 		<header id="my-head" class="my-absolute-head">
 			<div id="main-menu"></div>						
 			<!--logo header-->
-			<h2><a href="index.jsp" class="cssLogo">UC3Mshop</small></a></h2>
+			<h2><a href="/OnlineStore/home" class="cssLogo">UC3Mshop</small></a></h2>
 			<ul id="top-menu" class="menu my_normal">
-				<li><a href="myCart.jsp">My cart</a></li>
-				<li><a href="registration.jsp">Registration</a></li>
-				<li><a href="login.jsp">Login</a></li>
+				<li><a href="/OnlineStore/myCart">My cart</a></li>
+				<li><a href="/OnlineStore/registration">Registration</a></li>
+				<li><a href="/OnlineStore/login">Login</a></li>
 			</ul>			
 			<!-- search form header -->
 			<div id="my-search">
@@ -48,12 +48,12 @@
 			</div>
 
 			<ul id="main-menu" class="menu my_normal">
-				<li class="linkk"><a href="index.jsp">Home</a></li>
-				<li class="linkk"><a href="YoungMain.jsp">Young fashion</a></li>
-				<li class="linkk"><a href="SportsMain.jsp">Sportswear</a></li>
-				<li class="linkk"><a href="KidsMain.jsp">Kids clothing</a></li>
-				<li class="linkk"><a href="ManWomanMain.jsp">Man & woman fashion</a></li>
-				<li class="linkk"><a href="informations.jsp">Informations</a></li>
+				<li class="linkk"><a href="/OnlineStore/home">Home</a></li>
+				<li class="linkk"><a href="/OnlineStore/young">Young fashion</a></li>
+				<li class="linkk"><a href="/OnlineStore/sports">Sportswear</a></li>
+				<li class="linkk"><a href="/OnlineStore/kids">Kids clothing</a></li>
+				<li class="linkk"><a href="/OnlineStore/manAndWomen">Man & woman fashion</a></li>
+				<li class="linkk"><a href="/OnlineStore/informations">Informations</a></li>
 			</ul>
 		</header>
 
