@@ -2,10 +2,10 @@
 <jsp:include page="header.jsp" />
 <h1>Registration</h1>
 <hr>
-<h3>To regeister for a UC3M Shop account, please fill out this form. Fields with a red asterisk are required.</h3>
+<p>To register for a UC3M Shop account, please fill out this form. Fields with a red asterisk are required.</p>
 <br>
 <form>
-    <h4>Account Information: </h4>
+    <h4>Account Information: </h4><br/>
     <table  id="requiredInfo" cellpadding="3">
         <tr>
             <td align="right"><strong><font color="red">*</font>First name:</strong></td>
@@ -20,11 +20,12 @@
             <td><input type="password" name="password" value=""></td>
         </tr>
     </table>
-    <br>
+    <br>&nbsp;<br/>
 
     
     <table id="optionalInfo" cellpadding="3">
-        <h4>Shipping Information: </h4>
+    
+        <h4>Shipping Information: </h4><br/>
         <tr>
             <td align=right rowspan=2><strong>Address:</strong></td>
             <td><input type="email" name="address1" value=""></td>
@@ -46,7 +47,7 @@
         </tr>
     </table>
     <br><br>
-    <input style="margin-left:200px" type="submit" class="submitButton" value="Submit">
+    <input style="margin-left:200px" type="submit" class="admin-button" value="Submit">
 </form>
 
 <jsp:include page="footer.jsp" />

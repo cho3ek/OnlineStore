@@ -2,42 +2,42 @@
 <h1>Checkout</h1><br>
 <hr>
 	<form method="post" action="">
-		<h3>Billing Informations:</h3>
-		<h5>All fields required</h5>
+		<h3>Billing Informations:</h3><br/>
+		<h5>All fields required</h5><br/>
 		<table id="billingAddressForm" cellpadding=3>
 			<tr>
 				<td align="right"><b>First name:</b></td>
-				<td><input type="text" name="fName" value="[user fName]"></td>
+				<td><input type="text" name="fName" value=""></td>
 				<td align="right"><b>Last name:</b></td>
-				<td><input type="text" name="lName" value="[user lName]"></td>
+				<td><input type="text" name="lName" value=""></td>
 			</tr>
 
 			<tr>
 				<td align="right" rowspan=2><b>Address:</b></td>
-				<td><input type="text" name="address1" value="[user address1]"></td>
+				<td><input type="text" name="address1" value=""></td>
 			</tr>
 
 			<tr>
-				<td><input type="text" name="address2" value="[user address2]"></td>
+				<td><input type="text" name="address2" value=""></td>
 			</tr>
 
 			<tr>
 				<td align="right"><b>City:</b></td>
-				<td><input type="text" name="city" value="[user city]"></td>
+				<td><input type="text" name="city" value=""></td>
 				<td align="right"><b>State:</b></td>
-				<td><input type="text" name="state" value="[user state]"></td>
+				<td><input type="text" name="state" value=""></td>
 			</tr>
 
 			<tr>
 				<td align="right"><b>Postal code:</b></td>
-				<td><input type="text" name="zip" value="[user zip]"></td>
+				<td><input type="text" name="zip" value=""></td>
 				<td align="right"><b>Country:</b></td>
-				<td><input type="text" name="country" value="[user country]"></td>
+				<td><input type="text" name="country" value=""></td>
 			</tr>
 
 		</table>
 		<br>
-		<h4>Credit or debit card information: </h5>
+		<h4>Credit or debit card information: </h5><br/>
 		<table cellpadding="3">
 			<tr>
 				<td><b>Credit card number:</b></td>

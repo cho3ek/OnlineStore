@@ -43,6 +43,10 @@
     <servlet-name>SectionsController</servlet-name>
     <url-pattern>/home</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SectionsController</servlet-name>
+    <url-pattern>/product</url-pattern>
+  </servlet-mapping>
 
   <servlet>
     <servlet-name>CartController</servlet-name>

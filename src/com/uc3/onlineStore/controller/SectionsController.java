@@ -4,10 +4,10 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
 import java.util.*;
-import javax.servlet.annotation.WebServlet;
+//import javax.servlet.annotation.WebServlet;
 
 
-@WebServlet(name="SectionsController", loadOnStartup = 1, urlPatterns = {"/category","/young","/manAndWomen","/kids","/sports","informations"})
+//@WebServlet(name="SectionsController", loadOnStartup = 1, urlPatterns = {"/category","/young","/manAndWomen","/kids","/sports","informations"})
 
 public class SectionsController extends HttpServlet {
 
@@ -52,6 +52,8 @@ public class SectionsController extends HttpServlet {
 	    url = "YoungMain";
 	} else if (section.equals("informations")) {
 	    url = "informations";
+	} else if (section.equals("product")) {
+	    url = "product";
 	}
 	
         // use RequestDispatcher to forward request internally
