@@ -2,7 +2,7 @@
 <h1>Checkout</h1><br>
 <hr>
 	<form method="post" action="">
-		<h3>Billing Informations:</h3><br/>
+		<h3>Billing Information:</h3><br/>
 		<h5>All fields required</h5><br/>
 		<table id="billingAddressForm" cellpadding=3>
 			<tr>
@@ -39,6 +39,17 @@
 		<br>
 		<h4>Credit or debit card information: </h5><br/>
 		<table cellpadding="3">
+			<tr>
+				<td><b>Card type: </b></td>
+				<td>		
+					<select style="padding:0px" id="cardType">
+						<option value="Visa">Visa</optoin>
+						<option value="MasterCard">MasterCard</option>
+						<option value="Discover">Discover</option>
+						<option value="AmericanExpress">American Express</option>
+					</select>
+		 		</td>
+			</tr>
 			<tr>
 				<td><b>Credit card number:</b></td>
 				<td><input type="text" name="creditCardNum" value="" size="20"></td>
@@ -104,7 +115,7 @@
 		</table>
 		<br>
 		<p>
-			<input type="submit" name="submit" value="Submit Payment">
+			<input type="submit" class="admin-button" name="submit" value="Submit Payment">
 		</p>
 
 	</form>
