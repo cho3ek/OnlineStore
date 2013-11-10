@@ -4,10 +4,12 @@
     <div id="sidemenu" style="float: left;margin-right: 40px;">
 <ul>
 <%@page import="entities.Category"%>
+<%@page import="entities.Product"%>
 <%@ page import="java.util.*" %>
 <jsp:useBean id="category"  scope="request" class="entities.Category" />
+<jsp:useBean id="product"  scope="request" class="entities.Product" />
 
-<% int actualCategoryId = category.getIdCategory(); %>
+<% int actualCategoryId = product.getCategory().getIdCategory(); %>
 <% 	Object c = request.getAttribute("categories");
 	for(Object actual: (List)c){
 		category = (Category)actual;

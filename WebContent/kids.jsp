@@ -37,8 +37,8 @@
 						<a href="/OnlineStore/product?id=<%=product.getIdProduct()%>" class="product-overlay">
 							<img width="234" height="345" src="<%=product.getImageUrl()%>" alt="">
 							<h3><%=product.getName()%></h3>
-							<span class="price">€ <%=product.getPrice()%></span>
-						</a>
+								<span class="price" style="font-size:20px;font-weight:bold;">€ <%=product.getPrice()%></span>
+							</a>
 					</li>		
 		<%} %>	
 		

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-    
+  <%@ page errorPage="error.jsp" %>  
     <!DOCTYPE html 
       PUBLIC "-//W3C//DTD HTML 4.01//EN"
       "http://www.w3.org/TR/html4/strict.dtd">
@@ -15,9 +15,9 @@
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600,700" rel="stylesheet" type="text/css">
 
 <script type="text/javascript">
-    function sortApply(){
+    function sortApply(){ //js to add to url &sort=... if it doesn't exist, or change if exists
     	var url = window.location;
-    	var index = (window.location.href).indexOf("&");
+    	var index = (window.location.href).indexOf("&sort");
     	if(index!=-1) {
         	url = (window.location.href).substr(0,index);
 		}
@@ -34,7 +34,7 @@
         }
     }
     
-    function setSortType(){
+    function setSortType(){ //after choosing a type of sorting it shoul be selected in the list
     	var select = document.getElementById("sort");
         var i;
         for(i=0; i<select.options.length; i++){

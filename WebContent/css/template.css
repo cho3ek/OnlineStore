@@ -124,6 +124,7 @@ input[type="password"],
 input[type="email"],
 input[type="www"],
 input[type="tel"],
+input[type="number"],
 select,
 textarea  {
 	border: 1px solid #e5e5e5;
@@ -150,6 +151,7 @@ input[type="password"]:focus,
 input[type="url"]:focus,
 input[type="email"]:focus,
 input[type="tel"]:focus,
+input[type="number"]:focus,
 select:focus,
 select,
 
@@ -596,6 +598,7 @@ ul.products li.product {
 	position: relative;
 	width: 33%!important;
 	text-align:center;
+	line-height:160%;
 }
 
 ul.products li.product:hover {
@@ -733,36 +736,15 @@ box1,
   background: linear-gradient(#f23f37, #e7180f); 
   border-color: transparent; 
 } 
-#sidemenu > ul .has-sub > a::after { 
-  content: ''; 
-  position: absolute; 
-  top: 16px; 
-  right: 10px; 
-  width: 0px; 
-  height: 0px; 
-  
-  border: 4px solid transparent; 
-  border-left: 4px solid #e4433c; 
+
+
+#sidemenu > ul li.chosen a{ 
+  font-weight:bold!important;
+  font-size:110%;
 } 
-#sidemenu > ul .has-sub > a::before { 
-  content: ''; 
-  position: absolute; 
-  top: 17px; 
-  right: 10px; 
-  width: 0px; 
-  height: 0px; 
-  
-  border: 4px solid transparent; 
-  border-left: 4px solid #fff; 
-} 
-#sidemenu > ul li > a:hover::after, 
-#sidemenu > ul li:hover > a::after { 
-  border-left: 4px solid #fff; 
-} 
-#sidemenu > ul li > a:hover::before, 
-#sidemenu > ul li:hover > a::before { 
-  border-left: 4px solid rgba(0, 0, 0, 0.25); 
-} 
+
+
+
 #sidemenu > ul ul { 
   position: absolute; 
   left: 100%; 

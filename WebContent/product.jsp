@@ -4,10 +4,18 @@
     pageEncoding="utf-8"%>
     <jsp:include page="header.jsp" />
 
-<jsp:include page="sidemenu.jsp" />
 		
 		<jsp:useBean id="product"  scope="request" class="entities.Product" />
   
+  <%String url = product.getCategory().getSection().getUrl();
+  if(url.equals("kids")){ %> 
+  <img src="images/main_kids.jpg" alt="" style="margin-top:-40px;margin-bottom:40px;" /><br/><%}%>
+  <% if(url.equals("manAndWoman")){ %> <img src="images/main_man_woman.jpg" alt="" style="margin-top:-40px;margin-bottom:40px;" /><%} %>
+  <% if(url.equals("young")){ %> <img src="images/main_young.jpg" alt="" style="margin-top:-40px;margin-bottom:40px;" /><%} %>
+  <% if(url.equals("sports")){ %> <img src="images/main_sport.jpg" alt="" style="margin-top:-40px;margin-bottom:40px;" /><%} %>
+  
+  
+<jsp:include page="sidemenuProduct.jsp" />
 		<table>
 			<tr>
 				<td class="product-foto">
@@ -24,7 +32,7 @@
 													<label>Quantity: </label>
 													
 													<span class="quantity-box">
-													<input type="text" name="quantity[]" onblur="check(this);" value="1" style="width:40px;">
+													<input type="number" min="1" max="<%=product.getStock()%>" name="quantity" onblur="check(this);" value="1" style="width:65px;">
 													
 													</span>
 													
