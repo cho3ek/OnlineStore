@@ -88,6 +88,7 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Order` (
   `idOrder` INT NOT NULL AUTO_INCREMENT ,
   `time` TIME NULL ,
   `User_idUser` INT NOT NULL ,
+  `confirmed` TINYINT(1) NULL ,
   `paid` TINYINT(1) NULL DEFAULT false ,
   PRIMARY KEY (`idOrder`) ,
   INDEX `fk_Session_User1` (`User_idUser` ASC) ,
@@ -130,7 +131,6 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-
 INSERT INTO mydb.Section VALUES(1,'Young','young');
 INSERT INTO mydb.Section VALUES(2,'Sportswear','sports');
 INSERT INTO mydb.Section VALUES(3,'Kids','kids');
@@ -140,7 +140,7 @@ INSERT INTO mydb.Category VALUES(1,'Jeans','jeans',1);
 INSERT INTO mydb.Category VALUES(2,'Shirts','shirts',1);
 INSERT INTO mydb.Category VALUES(3,'Skirts','skirts',1);
 INSERT INTO mydb.Category VALUES(4,'Sweaters','sweaters',1);
-INSERT INTO mydb.Category VALUES(5,'T-shirts','tshirts',1);
+INSERT INTO mydb.Category VALUES(5,'Blouses','blouses',1);
 
 INSERT INTO mydb.Category VALUES(6,'T-shirts','tshirts',2);
 INSERT INTO mydb.Category VALUES(7,'Blouses','blouses',2);
@@ -155,17 +155,20 @@ INSERT INTO mydb.Category VALUES(13,'Shirts','shirts',4);
 INSERT INTO mydb.Category VALUES(14,'Suits','suits',4);
 INSERT INTO mydb.Category VALUES(15,'Components','components',4);
 
+
+
+
 INSERT INTO mydb.Product VALUES(1,'Jeans ver 1',49.99,'Super jeans decription........',8,'images/young/jeansm1.jpg',1);
 INSERT INTO mydb.Product VALUES(2,'Blouse ver 1',39.99,'Super blouse decription...........',6,'images/sports/sportm5.jpg',7);
 INSERT INTO mydb.Product VALUES(3,'Suit ver 1',49.99,'Extra suit description........',2,'images/manwoman/suitm1.jpg',14);
-INSERT INTO mydb.Product VALUES(4,'Boy T-shirt 1',29.99,'Other oldschoold T-shirt for young children',11,'images/kids/tshirtb1.jpg',11);
-INSERT INTO mydb.Product VALUES(5,'Boy T-shirt 2',15.99,'Other oldschoold T-shirt for young children',9,'images/kids/tshirtb2.jpg',11);
-INSERT INTO mydb.Product VALUES(6,'Boy T-shirt 3',9.99,'Other oldschoold T-shirt for young children',5,'images/kids/tshirtb3.jpg',11);
-INSERT INTO mydb.Product VALUES(7,'Boy T-shirt 4',8.99,'Other oldschoold T-shirt for young children',4,'images/kids/tshirtb4.jpg',11);
-INSERT INTO mydb.Product VALUES(8,'Girl T-shirt 1',8.99,'Other oldschoold T-shirt for young children',3,'images/kids/tshirtg1.jpg',11);
-INSERT INTO mydb.Product VALUES(9,'Girl T-shirt 2',8.99,'Other oldschoold T-shirt for young children',2,'images/kids/tshirtg2.jpg',11);
-INSERT INTO mydb.Product VALUES(10,'Girl T-shirt 3',8.49,'Other oldschoold T-shirt for young children',7,'images/kids/tshirtg3.jpg',11);
-INSERT INTO mydb.Product VALUES(11,'Girl T-shirt 4',10.99,'Other oldschoold T-shirt for young children',6,'images/kids/tshirtg4.jpg',11);
+INSERT INTO mydb.Product VALUES(4,'Boy Blouse 1',29.99,'Other oldschoold Blouse for young children',11,'images/kids/tshirtb1.jpg',11);
+INSERT INTO mydb.Product VALUES(5,'Boy Blouse 2',15.99,'Other oldschoold Blouse for young children',9,'images/kids/tshirtb2.jpg',11);
+INSERT INTO mydb.Product VALUES(6,'Boy Blouse 3',9.99,'Other oldschoold Blouse for young children',5,'images/kids/tshirtb3.jpg',11);
+INSERT INTO mydb.Product VALUES(7,'Boy Blouse 4',8.99,'Other oldschoold Blouse for young children',4,'images/kids/tshirtb4.jpg',11);
+INSERT INTO mydb.Product VALUES(8,'Girl Blouse 1',8.99,'Other oldschoold Blouse for young children',3,'images/kids/tshirtg1.jpg',11);
+INSERT INTO mydb.Product VALUES(9,'Girl Blouse 2',8.99,'Other oldschoold Blouse for young children',2,'images/kids/tshirtg2.jpg',11);
+INSERT INTO mydb.Product VALUES(10,'Girl Blouse 3',8.49,'Other oldschoold Blouse for young children',7,'images/kids/tshirtg3.jpg',11);
+INSERT INTO mydb.Product VALUES(11,'Girl Blouse 4',10.99,'Other oldschoold Blouse for young children',6,'images/kids/tshirtg4.jpg',11);
 INSERT INTO mydb.Product VALUES(12,'Boy Coat 1',58.99,'Other oldschoold Coat for young children',7,'images/kids/coatb1.jpg',8);
 INSERT INTO mydb.Product VALUES(13,'Boy Coat 2',58.99,'Other oldschoold Coat for young children',9,'images/kids/coatb2.jpg',8);
 INSERT INTO mydb.Product VALUES(14,'Boy Coat 3',58.49,'Other oldschoold Coat for young children',11,'images/kids/coatb3.jpg',8);
