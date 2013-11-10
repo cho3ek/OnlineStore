@@ -18,6 +18,8 @@ public class Order implements Serializable {
 	@Id
 	private int idOrder;
 
+	private byte confirmed;
+
 	private byte paid;
 
 	private Time time;
@@ -40,6 +42,14 @@ public class Order implements Serializable {
 
 	public void setIdOrder(int idOrder) {
 		this.idOrder = idOrder;
+	}
+
+	public byte getConfirmed() {
+		return this.confirmed;
+	}
+
+	public void setConfirmed(byte confirmed) {
+		this.confirmed = confirmed;
 	}
 
 	public byte getPaid() {

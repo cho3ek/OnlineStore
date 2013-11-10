@@ -140,7 +140,7 @@ INSERT INTO mydb.Category VALUES(1,'Jeans','jeans',1);
 INSERT INTO mydb.Category VALUES(2,'Shirts','shirts',1);
 INSERT INTO mydb.Category VALUES(3,'Skirts','skirts',1);
 INSERT INTO mydb.Category VALUES(4,'Sweaters','sweaters',1);
-INSERT INTO mydb.Category VALUES(5,'Blouses','blouses',1);
+INSERT INTO mydb.Category VALUES(5,'T-shirts','tshirts',1);
 
 INSERT INTO mydb.Category VALUES(6,'T-shirts','tshirts',2);
 INSERT INTO mydb.Category VALUES(7,'Blouses','blouses',2);
@@ -148,7 +148,7 @@ INSERT INTO mydb.Category VALUES(7,'Blouses','blouses',2);
 INSERT INTO mydb.Category VALUES(8,'Coats','coats',3);
 INSERT INTO mydb.Category VALUES(9,'Dresses','dresses',3);
 INSERT INTO mydb.Category VALUES(10,'Pants','pants',3);
-INSERT INTO mydb.Category VALUES(11,'T-shirts','tshirt',3);
+INSERT INTO mydb.Category VALUES(11,'Blouses','blouses',3);
 
 INSERT INTO mydb.Category VALUES(12,'Dresses','dresses',4);
 INSERT INTO mydb.Category VALUES(13,'Shirts','shirts',4);
@@ -185,7 +185,6 @@ INSERT INTO mydb.Product VALUES(24,'Boy Pants 1',18.99,'Other oldschoold Pants f
 INSERT INTO mydb.Product VALUES(25,'Boy Pants 2',18.99,'Other oldschoold Pants for young children',9,'images/kids/pantsb2.jpg',10);
 INSERT INTO mydb.Product VALUES(26,'Boy Pants 3',18.49,'Other oldschoold Pants for young children',11,'images/kids/pantsb3.jpg',10);
 INSERT INTO mydb.Product VALUES(27,'Boy Pants 4',20.99,'Other oldschoold Pants for young children',12,'images/kids/pantsb4.jpg',10);
-
 
 
 
