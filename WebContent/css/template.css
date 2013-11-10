@@ -68,9 +68,6 @@ h6 {
 	padding: 0;
 }
 
-h1 {
-	font-size: 48px;
-}
 
 h2,
 .page-title {
@@ -127,6 +124,7 @@ input[type="password"],
 input[type="email"],
 input[type="www"],
 input[type="tel"],
+select,
 textarea  {
 	border: 1px solid #e5e5e5;
 	-webkit-border-radius: 4px;
@@ -142,12 +140,18 @@ textarea  {
 	max-width: 100%!important;
 	padding: 0 15px
 }
+select option{
+padding:5px;
+font-size:15px;
+}
 
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="url"]:focus,
 input[type="email"]:focus,
 input[type="tel"]:focus,
+select:focus,
+select,
 
 label {
 	color: #333;
@@ -893,4 +897,15 @@ box1,
 
 .tdbutton {
 	width:40px!important;
+}
+
+
+.small-image {
+	width:130px;
+	padding: 7px;
+}
+
+.small-image:hover {
+	opacity:0.7;
+	filter:alpha(opacity=80);
 }

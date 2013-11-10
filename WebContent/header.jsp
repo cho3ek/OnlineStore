@@ -14,6 +14,41 @@
 	<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300" rel="stylesheet" type="text/css">
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600,700" rel="stylesheet" type="text/css">
 
+<script type="text/javascript">
+    function sortApply(){
+    	var url = window.location;
+    	var index = (window.location.href).indexOf("&");
+    	if(index!=-1) {
+        	url = (window.location.href).substr(0,index);
+		}
+        var option = document.getElementById("sort").value;
+        
+        if(option == "priceUp"){
+            window.location = url+"&sort=priceUp";
+        } else  if(option == "priceDown"){
+            window.location = url+"&sort=priceDown";
+        } else  if(option == "nameUp"){
+            window.location = url+"&sort=nameUp";
+        } else  if(option == "nameDown"){
+            window.location = url+"&sort=nameDown";
+        }
+    }
+    
+    function setSortType(){
+    	var select = document.getElementById("sort");
+        var i;
+        for(i=0; i<select.options.length; i++){
+           if(((window.location.href).indexOf(select.options[i].value))>0){
+           		var opt = document.getElementById(select.options[i].value);
+           		opt.selected = true;
+    			return;
+    			//alert("yes");
+           }
+        }
+    
+    }
+</script>
+
 	<style type="text/css">
 		body, html, body button, body input, #main-menu .sub-menu li { font-family: 'Roboto Condensed'; }
 		h1,h2,h3,h4,h5,h6, #main-menu > li,
@@ -25,7 +60,7 @@
 	</style>
 </head>
 
-<body class="home">
+<body class="home" onload="setSortType()">
 	<div class="my-page-wrapper my-page">
 		<header id="my-head" class="my-absolute-head">
 			<div id="main-menu"></div>						
@@ -52,7 +87,7 @@
 				<li class="linkk"><a href="/OnlineStore/young">Young fashion</a></li>
 				<li class="linkk"><a href="/OnlineStore/sports">Sportswear</a></li>
 				<li class="linkk"><a href="/OnlineStore/kids">Kids clothing</a></li>
-				<li class="linkk"><a href="/OnlineStore/manAndWomen">Man & woman fashion</a></li>
+				<li class="linkk"><a href="/OnlineStore/manAndWoman">Man & woman fashion</a></li>
 				<li class="linkk"><a href="/OnlineStore/informations">Informations</a></li>
 			</ul>
 		</header>

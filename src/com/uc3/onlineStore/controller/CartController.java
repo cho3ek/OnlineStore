@@ -1,7 +1,7 @@
 package com.uc3.onlineStore.controller;
-
-import com.uc3.onlineStore.model.Product;
-import com.uc3.onlineStore.model.Cart;
+//import com.uc3.onlineStore.model.Product;
+//import com.uc3.onlineStore.model.Cart;
+import entities.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;

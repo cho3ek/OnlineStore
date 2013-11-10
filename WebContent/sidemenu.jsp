@@ -1,9 +1,26 @@
-<div id="sidemenu" style="float: left;margin-right: 40px;">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+    
+    <div id="sidemenu" style="float: left;margin-right: 40px;">
 <ul>
-   <li class='active'><a href='#'><span>Shoes</span></a></li>
-   <li class='active'><a href='#'><span>T-shirts</span></a></li>
-   <li class='active'><a href='#'><span>Trousers</span></a></li>
-   <li class='active'><a href='#'><span>Bags</span></a></li>
+<%@page import="entities.Category"%>
+<%@page import="entities.Product"%>
+<%@ page import="java.util.*" %>
+<jsp:useBean id="product"  scope="request" class="entities.Product" />
+<jsp:useBean id="category"  scope="request" class="entities.Category" />
+
+<% 	Object c = request.getAttribute("categories");
+	for(Object actual: (List)c){
+		category = (Category)actual;
+		%>
+		
+		<li class='active'><a href='<%=category.getSection().getUrl()%>?catId=<%=category.getIdCategory()%>'><span><%=category.getName()%></span></a></li>
+<%	}
+ %>
+ 
+
+
+   
      
 </ul>
 </div>

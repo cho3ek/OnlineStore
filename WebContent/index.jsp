@@ -36,10 +36,10 @@
 							</figure>
 							<figure class="inverse">
 								<img src="images/main_page/man_and_woman.jpg" alt="Man & Woman fashion">
-								<a href="/OnlineStore/manAndWomen"><div class="my-img-overlay"></div></a>
+								<a href="/OnlineStore/manAndWoman"><div class="my-img-overlay"></div></a>
 								<figcaption>
 									<h3><strong>Man & Woman</strong></h3>
-									<a href="/OnlineStore/manAndWomen" title="Man & Woman fashion" class="my-image show ">More details</a>
+									<a href="/OnlineStore/manAndWoman" title="Man & Woman fashion" class="my-image show ">More details</a>
 								</figcaption>
 							</figure>
 						</div>

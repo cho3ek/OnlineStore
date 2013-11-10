@@ -14,16 +14,16 @@
 		</tr>
 		<tr>
 			<td rowspan="1" valign="top">Standard delivery</td>
-			<td rowspan="1" valign="top">L3.95</td>
+			<td rowspan="1" valign="top">€ 3.95</td>
 			
 		</tr>
 		<tr>
 			<td valign="top">Next day delivery</td>
-			<td valign="top">L3.95</td>
+			<td valign="top">€ 3.95</td>
 		</tr>
 		<tr>
 			<td valign="top">Saturday delivery (available on selected products)</td>
-			<td valign="top">L6.95</td>
+			<td valign="top">€ 6.95</td>
 		</tr>
 		<tr>
 			<td rowspan="1" valign="top">Royal Mail (available on selected products)</td>
