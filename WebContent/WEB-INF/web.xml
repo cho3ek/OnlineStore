@@ -65,15 +65,15 @@
     <servlet-name>LoginController</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-
-  <servlet>
-    <servlet-name>RegistrationController</servlet-name>
-    <servlet-class>com.uc3.onlineStore.controller.RegistrationController</servlet-class>
-  </servlet>
   <servlet-mapping>
-    <servlet-name>RegistrationController</servlet-name>
+    <servlet-name>LoginController</servlet-name>
+    <url-pattern>/userEdit</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginController</servlet-name>
     <url-pattern>/registration</url-pattern>
   </servlet-mapping>
+
   
 <error-page>
     <!-- Missing login -->

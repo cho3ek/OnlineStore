@@ -3,7 +3,7 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 DROP SCHEMA IF EXISTS `mydb` ;
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `mydb` ;
 
 -- -----------------------------------------------------
@@ -215,6 +215,6 @@ INSERT INTO mydb.Product VALUES(25,'Boy Pants 2',18.99,'Other oldschoold Pants f
 INSERT INTO mydb.Product VALUES(26,'Boy Pants 3',18.49,'Other oldschoold Pants for young children',11,'images/kids/pantsb3.jpg',false,10);
 INSERT INTO mydb.Product VALUES(27,'Boy Pants 4',20.99,'Other oldschoold Pants for young children',12,'images/kids/pantsb4.jpg',false,10);
 
-INSERT INTO mydb.User VALUES(1,'as','John','Doe','john.doe@gmail.com','+34 666 555 444','Avenida de Atocha 42, 28045 Madrid',false);
+INSERT INTO mydb.User VALUES(1,'aa','John','Doe','john.doe@gmail.com','+34 666 555 444','Avenida de Atocha 42, 28045 Madrid',false);
 INSERT INTO mydb.Order VALUES(1,'2013-11-10 13:43:00',1,false,false);
 

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-  <%@ page errorPage="error.jsp" %>  
+    pageEncoding="utf-8"%>			
+<%@page import="entities.User"%>	
+<%@ page import="java.util.*" %>
+<jsp:useBean id="user" scope="request" class="entities.User" />
+
     <!DOCTYPE html 
       PUBLIC "-//W3C//DTD HTML 4.01//EN"
       "http://www.w3.org/TR/html4/strict.dtd">
@@ -66,10 +69,29 @@
 			<div id="main-menu"></div>						
 			<!--logo header-->
 			<h2><a href="/OnlineStore/home" class="cssLogo">UC3Mshop</small></a></h2>
+			
+				
+				
+	<%boolean logged = false; %>
+	<%try{
+	if(session.getAttribute("logged").toString().equals("yes")) { 
+			logged = true;
+			user = (User)session.getAttribute("user"); %>
+			
 			<ul id="top-menu" class="menu my_normal">
-				<li><a href="/OnlineStore/myCart">My cart</a></li>
-				<li><a href="/OnlineStore/registration">Registration</a></li>
-				<li><a href="/OnlineStore/login">My account</a></li>
+			<li><p style="margin: 0 10px 0 14px;color:#888;">Hello <b><%=user.getName() %> <%=user.getSurname() %></b>!</p></li>
+			<li><a href="login">Your account</a></li>
+			<li><a href="/OnlineStore/myCart">Your cart</a></li>
+			<li><a href="login?action=logout"><b>Logout</b></a></li>
+	<% 	}}catch(Exception e){}%>
+	
+	<%if(!logged){ %>
+	<ul id="top-menu" class="menu my_normal">
+	<li><a href="/OnlineStore/myCart">Your cart</a></li>
+	<li><a href="/OnlineStore/registration">Registration</a></li>
+	<li><a href="/OnlineStore/login">Login</a></li>
+		<%} %>
+		
 			</ul>			
 			<!-- search form header -->
 			<div id="my-search">
