@@ -17,6 +17,8 @@ public class User implements Serializable {
 	@Id
 	private int idUser;
 
+	private String address;
+
 	private byte adminRights;
 
 	private String email;
@@ -28,6 +30,10 @@ public class User implements Serializable {
 	private String phone;
 
 	private String surname;
+
+	//bi-directional many-to-one association to Favourite
+	@OneToMany(mappedBy="user")
+	private List<Favourite> favourites;
 
 	//bi-directional many-to-one association to Order
 	@OneToMany(mappedBy="user")
@@ -42,6 +48,14 @@ public class User implements Serializable {
 
 	public void setIdUser(int idUser) {
 		this.idUser = idUser;
+	}
+
+	public String getAddress() {
+		return this.address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public byte getAdminRights() {
@@ -92,6 +106,14 @@ public class User implements Serializable {
 		this.surname = surname;
 	}
 
+	public List<Favourite> getFavourites() {
+		return this.favourites;
+	}
+
+	public void setFavourites(List<Favourite> favourites) {
+		this.favourites = favourites;
+	}
+	
 	public List<Order> getOrders() {
 		return this.orders;
 	}

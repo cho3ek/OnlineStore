@@ -69,7 +69,7 @@
 			<ul id="top-menu" class="menu my_normal">
 				<li><a href="/OnlineStore/myCart">My cart</a></li>
 				<li><a href="/OnlineStore/registration">Registration</a></li>
-				<li><a href="/OnlineStore/login">Login</a></li>
+				<li><a href="/OnlineStore/login">My account</a></li>
 			</ul>			
 			<!-- search form header -->
 			<div id="my-search">

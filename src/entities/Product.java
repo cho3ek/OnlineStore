@@ -20,6 +20,8 @@ public class Product implements Serializable {
 
 	private String description;
 
+	private byte highlighted;
+
 	private String imageUrl;
 
 	private String name;
@@ -27,6 +29,10 @@ public class Product implements Serializable {
 	private BigDecimal price;
 
 	private int stock;
+
+	//bi-directional many-to-one association to Favourite
+	@OneToMany(mappedBy="product")
+	private List<Favourite> favourites;
 
 	//bi-directional many-to-one association to Orderproduct
 	@OneToMany(mappedBy="product")
@@ -54,6 +60,14 @@ public class Product implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public byte getHighlighted() {
+		return this.highlighted;
+	}
+
+	public void setHighlighted(byte highlighted) {
+		this.highlighted = highlighted;
 	}
 
 	public String getImageUrl() {
@@ -88,6 +102,14 @@ public class Product implements Serializable {
 		this.stock = stock;
 	}
 
+	public List<Favourite> getFavourites() {
+		return this.favourites;
+	}
+
+	public void setFavourites(List<Favourite> favourites) {
+		this.favourites = favourites;
+	}
+	
 	public List<Orderproduct> getOrderproducts() {
 		return this.orderproducts;
 	}

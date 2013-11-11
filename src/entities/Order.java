@@ -2,7 +2,7 @@ package entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 
 
@@ -22,7 +22,8 @@ public class Order implements Serializable {
 
 	private byte paid;
 
-	private Time time;
+    @Temporal( TemporalType.TIMESTAMP)
+	private Date time;
 
 	//bi-directional many-to-one association to User
     @ManyToOne
@@ -60,11 +61,11 @@ public class Order implements Serializable {
 		this.paid = paid;
 	}
 
-	public Time getTime() {
+	public Date getTime() {
 		return this.time;
 	}
 
-	public void setTime(Time time) {
+	public void setTime(Date time) {
 		this.time = time;
 	}
 
