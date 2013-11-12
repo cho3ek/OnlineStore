@@ -29,7 +29,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>SectionsController</servlet-name>
-    <url-pattern>/category</url-pattern>
+    <url-pattern>/search</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>SectionsController</servlet-name>

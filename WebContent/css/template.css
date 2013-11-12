@@ -588,6 +588,30 @@ display: table;
 	margin-bottom:30px;
 }
 
+ul.results li.product {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	float: left;
+	margin-bottom: 30px;
+	padding: 6px;
+	position: relative;
+	width: 33%!important;
+	text-align:left;
+	line-height:160%;
+}
+
+ul.results {
+	width:1000px;
+	
+}
+ul.results li.product:hover {
+	opacity:0.8;
+filter:alpha(opacity=80);
+background-color:#f3f3f3;
+
+}
+
 ul.products li.product {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -600,6 +624,10 @@ ul.products li.product {
 	text-align:center;
 	line-height:160%;
 }
+
+
+
+
 
 ul.products li.product:hover {
 	opacity:0.8;

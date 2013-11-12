@@ -32,9 +32,9 @@
 	<p style="text-align:left;font-size:18px;">
 	<% user = (User)session.getAttribute("user");%>
 	<%if(request.getParameter("action") != null){
-	if(request.getParameter("action").equals("save")){%>
-	<p style="color:green;font-size:16px;">Your new data has been saved!</p>
-<%} }%>
+		if(request.getParameter("action").equals("save")){%>
+		<p style="color:green;font-size:16px;">Your new data has been saved!</p>
+	<%} }%>
 
 
 	<table>

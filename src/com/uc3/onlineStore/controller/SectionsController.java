@@ -25,6 +25,7 @@ public class SectionsController extends HttpServlet {
 	List results;
 	EntityManager em;
 	String url = "index";
+	String keyword = "";
 	int idProductGet = 0;
 	int idCategoryGet = 0;
 
@@ -82,6 +83,9 @@ public class SectionsController extends HttpServlet {
 			url = "product";
 			getCurrentProduct(request);
 			getListOfAllCategories(request);
+		} else if (section.contains("search")) {
+			url = "search";
+			getSearchResults(request);
 		} else if (section.contains("home")) {
 			url = "index";
 		} else if (section.contains("index")) {
@@ -218,5 +222,31 @@ public class SectionsController extends HttpServlet {
 			request.setAttribute("productsSection", results);
 		}
 	}
+	
+	/* TO SHOW SEARCH RESULTS */
+	public void getSearchResults(HttpServletRequest request) {
+		if (request.getParameter("keyword") != null) {
+			keyword = request.getParameter("keyword");
+		}
+		if (keyword.length() > 1) {
+			try {
+				query = em
+						.createQuery("SELECT p FROM Product p WHERE p.name LIKE '%"
+								+ keyword + "%'");
+				results = query.getResultList();
+				if (results == null) {
+					request.setAttribute("searchResults", "");
+				} else {
+					request.setAttribute("searchResults", (List) results);
+				}
+			} catch (Exception e) {
+			}
+		}
+		else {
+			List empty = new ArrayList();
+			request.setAttribute("searchResults", empty);
+		}
+	}
 
+	
 }

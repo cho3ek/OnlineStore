@@ -103,8 +103,17 @@
         pass1.style.color = "#fff";
         pass2.style.color = "#fff";
         errorCount++;
+        message.innerHTML += "Passwords are empty!<br/>";
     }
-    else if(pass1.value == pass2.value ){ 
+    if(pass1.value != pass2.value) {
+        pass1.style.backgroundColor = badColor; 
+        pass2.style.backgroundColor = badColor; 
+        pass1.style.color = "#fff";
+        pass2.style.color = "#fff";
+        errorCount++;
+        message.innerHTML += "Passwords are not the same!<br/>";
+    }
+    else if(pass1.value == pass2.value && pass1.value != "" && pass2.value !=""){ 
     pass1.style.backgroundColor = withoutColor;  
     pass2.style.backgroundColor = withoutColor;
     pass1.style.color = "#9d9d9d";

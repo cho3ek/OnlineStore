@@ -96,9 +96,9 @@
 			<!-- search form header -->
 			<div id="my-search">
 				<div id="search-3" class="box widget_search">
-					<form method="get" id="searchform" action="searchResultsView.jsp">
+					<form method="get" id="searchform" action="search">
 						<label for="s">Search</label>
-						<input type="text" class="field" name="s" id="s" placeholder="Search" value="">
+						<input type="text" class="field" name="keyword" id="s" placeholder="Search" value="">
 						<input type="submit" id="searchsubmit" value="Search">
 					</form>
 				</div>	
