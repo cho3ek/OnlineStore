@@ -88,8 +88,10 @@ public class SectionsController extends HttpServlet {
 			getSearchResults(request);
 		} else if (section.contains("home")) {
 			url = "index";
+			getBestsellers(request);
 		} else if (section.contains("index")) {
 			url = "index";
+			getBestsellers(request);
 		}
 
 		/* closing connections and using RequestDispatcher */
@@ -246,6 +248,24 @@ public class SectionsController extends HttpServlet {
 			List empty = new ArrayList();
 			request.setAttribute("searchResults", empty);
 		}
+	}
+	
+	/* TO GET BESTSELLERS */
+	public void getBestsellers(HttpServletRequest request) {
+			try {
+				
+				query = em
+						.createQuery("SELECT p FROM Product p ORDER BY p.price"); /* SONIA - CHANGE THIS TO GET BESTSELLERS FROM OrderProducts TABLE */
+				query.setMaxResults(6);
+				results = query.getResultList();
+				if (results == null) {
+					request.setAttribute("bestSellers", "");
+				} else {
+					request.setAttribute("bestSellers", (List)results);
+				}
+			} catch (Exception e) {
+			}
+		
 	}
 
 	

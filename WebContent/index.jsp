@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     <jsp:include page="header.jsp" />
+    <%@page import="entities.Product"%>	
+<%@ page import="java.util.*" %>
+<jsp:useBean id="product"  scope="request" class="entities.Product" />
 
 <div id="my-mainbody-columns" class="my-content-no-sidebar">			
 <section id="my-mainbody">
@@ -44,6 +47,25 @@
 							</figure>
 						</div>
 					</div>
+					
+					
+					<br/>&nbsp;<br/>
+					<h2>Bestsellers</h2><br/>
+					<ul class="results">	
+					<% Object d = request.getAttribute("bestSellers");
+	for(Object current: (List)d){
+		product = (Product)current;%>
+		
+		<a href="/OnlineStore/product?id=<%=product.getIdProduct()%>" class="product-overlay">
+		<li class="product">									
+						
+							<img width="104" src="<%=product.getImageUrl()%>" style="float:left;padding-right:30px;" alt="">
+								<h4 style="margin-top:15px;"><%=product.getName()%></h4>
+							<span class="price" style="font-size:14px;">€ <%=product.getPrice()%></span>
+							<h4 style="font-size:12px;margin-top:15px;">Section: &nbsp;&nbsp;<%=product.getCategory().getSection().getName()%></h4>
+							
+		</li>		</a>
+		<%} %>	
 				</section>
 			</div>
 
