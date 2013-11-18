@@ -89,10 +89,7 @@ public class SectionsController extends HttpServlet {
 		} else if (section.contains("home")) {
 			url = "index";
 			getBestsellers(request);
-		} else if (section.contains("index")) {
-			url = "index";
-			getBestsellers(request);
-		}
+		} 
 
 		/* closing connections and using RequestDispatcher */
 		em.close();
@@ -120,6 +117,7 @@ public class SectionsController extends HttpServlet {
 	/* TO DIFFER QUERY DEPENDING ON CHOSEN SORT TYPE */
 	public void getSortComparator(HttpServletRequest request) {
 		String sort = "";
+		comparator = "";
 		if (request.getParameter("sort") != null) {
 			sort = (String) request.getParameter("sort");
 			if (sort.equals("priceDown")) {

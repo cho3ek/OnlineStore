@@ -9,7 +9,7 @@
 
 
 
-<!-- DISPLAY MESSAGES -->
+<!-- DISPLAY MESSAGES AT THE TOP FOR NOT LOGGED IN USERS -->
 <%if(request.getAttribute("message") != null && request.getAttribute("message").equals("wrongData")){%>
 	<p style="text-align:center;color:red;font-size:16px;">Wrong data! Try again!</p>
 <%} %>
@@ -27,16 +27,44 @@
 
 
 <!-- IF WE ARE LOGGED IN (ATTRIBUTE LOGGED IN SESSION) DISPLAY ALL THE USER DATA -->
+
+
+<!-- FIRST AT THE TOP MESSAGES ABOUT EDITING ACTIONS FOR LOGGED IN USERS -->
 <%try{
 	if(session.getAttribute("logged").toString().equals("yes")) { %>
 	<p style="text-align:left;font-size:18px;">
 	<% user = (User)session.getAttribute("user");%>
 	<%if(request.getParameter("action") != null){
 		if(request.getParameter("action").equals("save")){%>
-		<p style="color:green;font-size:16px;">Your new data has been saved!</p>
+		<p style="color:green;font-size:16px;background-color: #f1f1f1;padding: 20px;">
+			<img src="images/ok.png" style="float:left;padding-right: 20px;width: 25px;">
+			<b>Your new data has been saved!</b>
+		</p>
 	<%} }%>
+	<%if(request.getParameter("action") != null){
+		if(request.getParameter("action").equals("saveProduct")){%>
+		<p style="color:green;font-size:16px;background-color: #f1f1f1;padding: 20px;">
+			<img src="images/ok.png" style="float:left;padding-right: 20px;width: 25px;">
+			<b>Product has been changed!</b>
+		</p>
+	<%} }%>
+	<%if(request.getParameter("action") != null){
+		if(request.getParameter("action").equals("deletedProduct")){%>
+		<p style="color:green;font-size:16px;background-color: #f1f1f1;padding: 20px;">
+			<img src="images/ok.png" style="float:left;padding-right: 20px;width: 25px;">
+			<b>Product has been deleted!</b>
+		</p>
+	<%} }%>
+	<%if(request.getParameter("action") != null){
+		if(request.getParameter("action").equals("deletedCategory")){%>
+		<p style="color:green;font-size:16px;background-color: #f1f1f1;padding: 20px;">
+			<img src="images/ok.png" style="float:left;padding-right: 20px;width: 25px;">
+			<b>Category has been deleted!</b>
+		</p>
+	<%} }%>
+	
 
-
+<!-- USER DATA WITH FORM CONTAING USER ACTIONS TO DO DEPENDING ON IF USER IS ADMIN OR NOT -->
 	<table>
 	<tr><td><h3>Hello <%=user.getName() %> <%=user.getSurname() %>!</h3></td>
 	
@@ -44,6 +72,21 @@
 	<input type="hidden" name="action" value="edit"/>
 	<input type="submit" value="Edit my data" class="admin-button" />
 	</form></td><td>
+	
+	
+	<%	boolean adminRights = user.getAdminRights()!=0;
+			if(adminRights){ %>
+				<td><form action="login" method="get" style="margin-left:30px;">
+				<input type="hidden" name="action" value="productEdit"/>
+				<input type="submit" value="Edit products" class="admin-button" />
+				</form></td><td>
+				<td><form action="login" method="get" style="margin-left:30px;">
+				<input type="hidden" name="action" value="categoryEdit"/>
+				<input type="submit" value="Edit categories" class="admin-button" />
+				</form></td><td>
+	<%} %>
+	
+	
 	<form action="login" method="get" style="margin-left:30px;">
 	<input type="hidden" name="action" value="logout"/>
 	<input type="submit" value="Logout" class="admin-button" />
@@ -63,6 +106,7 @@
 	<br/>&nbsp;<br/>
 	<u>Your list of favourites products:</u>
 	</p>
+	
 <% 	}}catch(Exception e){}%>
 
 

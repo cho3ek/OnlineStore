@@ -16,6 +16,26 @@
   
   
 <jsp:include page="sidemenuProduct.jsp" />
+				
+				
+				<%try{ if(session.getAttribute("loggedAdmin").toString().equals("yes")) { %>
+						<!--IF WE ARE LOGGED IN AS ADMINISTRATOR - BUTTON TO EDIT PRODUCT IS DISPLAYED -->
+							<div style="position:absolute;margin-left:613px;">
+							<form action="login" method="get" style="float:right;">
+								<input type="hidden" name="action" value="productEdit" />
+								<input type="hidden" name="id" value="<%=product.getIdProduct() %>" />
+								<input type="submit" class="admin-button" value="Edit this product" />
+							</form>
+							<div style="clear:both"> </div>
+							<form action="login" method="get" style="float:right;">
+								<input type="hidden" name="action" value="productDelete" />
+								<input type="hidden" name="id" value="<%=product.getIdProduct() %>" />
+								<input type="submit" class="admin-button" value="Delete this product" />
+							</form>
+							</div>
+						<%}}catch(Exception e){} %>
+						
+						
 		<table>
 			<tr>
 				<td class="product-foto">
@@ -23,7 +43,10 @@
 				</td>
 				<td>
 				<small><%=product.getCategory().getSection().getName()%> <img src="images/ico_bullet.gif" style="width:8px;padding:0 10px" alt="" /> <%=product.getCategory().getName()%></small>
-				<h1><%=product.getName()%> </h1><br/>&nbsp;<br/>
+				<h1><%=product.getName()%> </h1>
+				
+						
+				<br/>&nbsp;<br/>
 					<p>Price:&nbsp;&nbsp; <a class="product-price">€ <%=product.getPrice()%></a><br/>
 			<small>Available sizes: <b>S, M, L, XL</b></small><br/>
 			<small>In stock: <b><%=product.getStock()%></b></small></p>

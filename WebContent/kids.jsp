@@ -30,40 +30,39 @@
 	
 			
 <% Object d = request.getAttribute("products");
-	for(Object current: (List)d){
-		product = (Product)current;%>
-		
+	for(Object current: (List)d){ product = (Product)current;%>
+<!-- IF WE HAVE ATTRIBUTE "PRODUCTS" SENT BY SERVLET WE DISPLAY PRODUCTS IN CATEGORY -->		
 		<li class="product">									
-						<a href="/OnlineStore/product?id=<%=product.getIdProduct()%>" class="product-overlay">
-							<img width="234" height="345" src="<%=product.getImageUrl()%>" alt="">
-								<span class="price" style="font-size:20px;font-weight:bold;">€ <%=product.getPrice()%></span>
-							<h3 style="color:#777;"><%=product.getName()%></h3>
-							</a>
-					</li>		
+			<a href="/OnlineStore/product?id=<%=product.getIdProduct()%>" class="product-overlay">
+				<img width="234" height="345" src="<%=product.getImageUrl()%>" alt="">
+				<h3><%=product.getName()%></h3>
+							<span class="price">€ <%=product.getPrice()%></span>
+			</a>
+		</li>		
 		<%} %>	
 		
 				</ul>
 				
 	<%} else { %>
-	
+	<!-- OTHERWISE WE DISPLAY ALL PRODUCT OF CHOSEN SECTION -->
 	
 	<p>All products of this section:</p><br/>
 	
 	
 	<% 	Object c = request.getAttribute("productsSection");
-	for(Object actual: (List)c){
-		product = (Product)actual;
-		%>
-		<a href="/OnlineStore/product?id=<%=product.getIdProduct() %>" title="<%=product.getName() %>, € <%=product.getPrice() %>">
-			<img src="<%=product.getImageUrl() %>" class="small-image">
-		</a>
+	for(Object actual: (List)c){ product = (Product)actual;%>
 		
-		<%
-		} %>
+		<div style="float:left;">
+			<a style="font-size:11px;" href="/OnlineStore/product?id=<%=product.getIdProduct() %>" title="<%=product.getName() %>, € <%=product.getPrice() %>">
+				<img src="<%=product.getImageUrl() %>" class="small-image" />
+				<div style="position:absolute;margin-top:-45px;opacity:0.7;margin-left:15px;background-color:#000;color:#fff;padding:4px;">€ <%=product.getPrice() %></div>
+				<br/>&nbsp;<br/>
+			</a>
+		</div>
+		
+		<% } }%>
+		
 		
 		<br/>&nbsp;<br/>
-		
-	
-	<%} %>
-			</div>
+		</div>
 <jsp:include page="footer.jsp" />

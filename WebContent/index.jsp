@@ -65,7 +65,8 @@
 							<h4 style="font-size:12px;margin-top:15px;">Section: &nbsp;&nbsp;<%=product.getCategory().getSection().getName()%></h4>
 							
 		</li>		</a>
-		<%} %>	
+		<%} %>	</ul>
+		
 				</section>
 			</div>
 

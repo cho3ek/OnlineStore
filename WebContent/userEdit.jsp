@@ -12,7 +12,7 @@
 
 
 
-<!-- IF WE ARE LOGGED IN -->
+<!-- WE CAN ENTER THIS ONLY IF WE ARE LOGGED IN -->
 <%try{
 	if(session.getAttribute("logged").toString().equals("yes")) { %>
 	<p style="text-align:left;font-size:18px;">
@@ -20,18 +20,19 @@
 	<table>
 	<tr><td><h3>Hello <%=user.getName() %> <%=user.getSurname() %>!</h3></td>
 	<td><form action="login" method="get" style="margin-left:30px;">
-	<input type="submit" value="Go back" class="admin-button" />
+	<input type="submit" value="Go back to your account" class="admin-button" />
 	</form></td><td>
 	<form action="login" method="get" style="margin-left:30px;">
 	<input type="hidden" name="action" value="logout"/>
 	<input type="submit" value="Logout" class="admin-button" />
-	</form></td</tr></table>
+	</form></td></tr></table>
 	
 <br/>
 <span id="message" class="message" style="font-size:12px;color:red;"></span><br/>
 	<u>Edit your private data:</u><br/>&nbsp;<br/>
 	<table>
 	<form action="login?action=save" method="post" id="editUser" style="margin-left:30px;">
+	<input type="hidden" name="actionPost" value="save" />
 	<tr><td style="width:150px;"><b>Name:</b></td><td><input type="text" id="name" name="name" onkeyup="checkPass(); " onclick="checkPass(); " value="<%=user.getName() %>" /></td></tr>
 	<tr><td><b>Surname:</b></td><td><input type="text" id="surname" name="surname" onkeyup="checkPass(); " onclick="checkPass(); " value="<%=user.getSurname() %>"/></td></tr>
 	<tr><td><b>Email:</b></td><td><input type="text" id="newEmail" name="newEmail" onkeyup="checkPass(); " onclick="checkPass(); " value="<%=user.getEmail() %>"/> <small>Be careful - it will be your new login</small><br/>&nbsp;<br/></td></tr>
