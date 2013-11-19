@@ -52,7 +52,7 @@
 	int i=0;
 	for(Object actual: (List)c){ product = (Product)actual;
 		if(product.getHighlighted()!=0){	
-		if(i==0){%><p>Highlighted products of this section:</p><%}%>
+		if(i==0){%><p>Highlighted products of this section:</p><%}i++;%>
 		<div style="float:left;background-color:rgb(255, 255, 200);margin-bottom:40px;">
 			<a style="font-size:11px;" href="/OnlineStore/product?id=<%=product.getIdProduct() %>" title="<%=product.getName() %>">
 				<img src="<%=product.getImageUrl() %>" class="small-image" />
