@@ -65,6 +65,7 @@
 	<br/>&nbsp;<br/>
 	</td></tr>
 	<tr><td><b>Image URL:</b></td> <td>	<input id="imageUrl" name="imageUrl" style="width:350px;margin-left:2px;" type="text" value=""/><br/></td></tr>
+	<tr><td><b><br/>Highlighted: </b></td> <td><br/>	<input id="highlighted" name="highlighted" type="checkbox" value="<%=product.getHighlighted() %>"/><br/></td></tr>
 	
 			
 	<tr><td> </td> <td><br/><input type="button" class="admin-button" value="Add this product" onClick="checkPass();submitForm();" /><br/></td></tr>

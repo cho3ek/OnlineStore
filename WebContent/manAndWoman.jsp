@@ -46,14 +46,32 @@
 	<%} else { %>
 	<!-- OTHERWISE WE DISPLAY ALL PRODUCT OF CHOSEN SECTION -->
 	
+	
+	<% 	Object c = request.getAttribute("productsSection");
+	int i=0;
+	for(Object actual: (List)c){ product = (Product)actual;
+		if(product.getHighlighted()!=0){	
+		if(i==0){%><p>Highlighted products of this section:</p><%}%>
+		<div style="float:left;background-color:rgb(255, 255, 200);margin-bottom:40px;">
+			<a style="font-size:11px;" href="/OnlineStore/product?id=<%=product.getIdProduct() %>" title="<%=product.getName() %>">
+				<img src="<%=product.getImageUrl() %>" class="small-image" />
+				<div style="position:absolute;margin-top:-45px;opacity:0.7;margin-left:15px;background-color:#000;color:#fff;padding:4px;">€ <%=product.getPrice() %></div>
+				<br/>
+			</a>
+		</div>
+		
+		<% }} %>
+		<div style="clear:both;"></div>
+		
+		
 	<p>All products of this section:</p><br/>
 	
 	
-	<% 	Object c = request.getAttribute("productsSection");
+	<% 	c = request.getAttribute("productsSection");
 	for(Object actual: (List)c){ product = (Product)actual;%>
 		
 		<div style="float:left;">
-			<a style="font-size:11px;" href="/OnlineStore/product?id=<%=product.getIdProduct() %>" title="<%=product.getName() %>, € <%=product.getPrice() %>">
+			<a style="font-size:11px;" href="/OnlineStore/product?id=<%=product.getIdProduct() %>" title="<%=product.getName() %>">
 				<img src="<%=product.getImageUrl() %>" class="small-image" />
 				<div style="position:absolute;margin-top:-45px;opacity:0.7;margin-left:15px;background-color:#000;color:#fff;padding:4px;">€ <%=product.getPrice() %></div>
 				<br/>&nbsp;<br/>

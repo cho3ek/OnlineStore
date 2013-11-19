@@ -78,10 +78,13 @@ Choose a section. You can also browse a shop normally and click "Edit" button ad
 				<% Object d = request.getAttribute("editProductList");
 					for(Object current: (List)d){ product = (Product)current;
 						if(product.getCategory().getSection().getUrl().equals("young")){%>
-							<li class="product" style="font-weight:normal;text-align:left;">
+							<li class="product" style="font-weight:normal;text-align:left;<%if(product.getHighlighted()!=0){ %>background-color:rgb(255, 255, 200);<%} %>">
 							<img width="124" src="<%=product.getImageUrl()%>" alt="" style="float:left;padding-right:16px;">
 								<span class="price" style="font-size:12px;font-weight:300;text-transform:uppercase;"><%=product.getName()%></span>
-								<br/><span class="price" style="font-size:12px;font-weight:bold;">€ <%=product.getPrice()%></span><br/>
+								<br/><span class="price" style="font-size:12px;font-weight:bold;">€ <%=product.getPrice()%> 
+								
+								<%if(product.getHighlighted()!=0){ %><img src="images/button.png" style="width:12px;"> HIGHLIGHTED <%} %>
+								</span><br/>
 								<span class="price" style="font-size:19px;font-weight:300;text-transform:uppercase;color:#aea5ca"><%=product.getCategory().getName()%></span>
 							<br/>
 							<br/>
@@ -98,7 +101,7 @@ Choose a section. You can also browse a shop normally and click "Edit" button ad
 							</form>
 							</li>
 				<%}} %>
-				</ul>
+				</ul><br/>&nbsp;<br/>
 				</div>
 				
 				
@@ -109,10 +112,11 @@ Choose a section. You can also browse a shop normally and click "Edit" button ad
 				<%  d = request.getAttribute("editProductList");
 					for(Object current: (List)d){ product = (Product)current;
 						if(product.getCategory().getSection().getUrl().equals("sports")){%>
-							<li class="product" style="font-weight:normal;text-align:left;">
+							<li class="product" style="font-weight:normal;text-align:left;<%if(product.getHighlighted()!=0){ %>background-color:rgb(255, 255, 200);<%} %>">
 							<img width="124" src="<%=product.getImageUrl()%>" alt="" style="float:left;padding-right:16px;">
 								<span class="price" style="font-size:12px;font-weight:300;text-transform:uppercase;"><%=product.getName()%></span>
-								<br/><span class="price" style="font-size:12px;font-weight:bold;">€ <%=product.getPrice()%></span><br/>
+								<br/><span class="price" style="font-size:12px;font-weight:bold;">€ <%=product.getPrice()%>
+								<%if(product.getHighlighted()!=0){ %><img src="images/button.png" style="width:12px;"> HIGHLIGHTED <%} %></span><br/>
 								<span class="price" style="font-size:19px;font-weight:300;text-transform:uppercase;color:#aea5ca"><%=product.getCategory().getName()%></span>
 							<br/>
 							<br/>
@@ -129,7 +133,7 @@ Choose a section. You can also browse a shop normally and click "Edit" button ad
 							</form>
 							</li>
 				<%}} %>
-				</ul>
+				</ul><br/>&nbsp;<br/>
 				</div>
 
 
@@ -140,10 +144,11 @@ Choose a section. You can also browse a shop normally and click "Edit" button ad
 				<%  d = request.getAttribute("editProductList");
 					for(Object current: (List)d){ product = (Product)current;
 						if(product.getCategory().getSection().getUrl().equals("kids")){%>
-							<li class="product" style="font-weight:normal;text-align:left;">
+							<li class="product" style="font-weight:normal;text-align:left;<%if(product.getHighlighted()!=0){ %>background-color:rgb(255, 255, 200);<%} %>">
 							<img width="124" src="<%=product.getImageUrl()%>" alt="" style="float:left;padding-right:16px;">
 								<span class="price" style="font-size:12px;font-weight:300;text-transform:uppercase;"><%=product.getName()%></span>
-								<br/><span class="price" style="font-size:12px;font-weight:bold;">€ <%=product.getPrice()%></span><br/>
+								<br/><span class="price" style="font-size:12px;font-weight:bold;">€ <%=product.getPrice()%>
+								<%if(product.getHighlighted()!=0){ %><img src="images/button.png" style="width:12px;"> HIGHLIGHTED <%} %></span><br/>
 								<span class="price" style="font-size:19px;font-weight:300;text-transform:uppercase;color:#aea5ca"><%=product.getCategory().getName()%></span>
 							<br/>
 							<br/>
@@ -160,7 +165,7 @@ Choose a section. You can also browse a shop normally and click "Edit" button ad
 							</form>
 							</li>
 				<%}} %>
-				</ul>
+				</ul><br/>&nbsp;<br/>
 				</div>
 
 
@@ -170,10 +175,11 @@ Choose a section. You can also browse a shop normally and click "Edit" button ad
 				<% d = request.getAttribute("editProductList");
 					for(Object current: (List)d){ product = (Product)current;
 						if(product.getCategory().getSection().getUrl().equals("manAndWoman")){%>
-							<li class="product" style="font-weight:normal;text-align:left;">
+							<li class="product" style="font-weight:normal;text-align:left;<%if(product.getHighlighted()!=0){ %>background-color:rgb(255, 255, 200);<%} %>">
 							<img width="124" src="<%=product.getImageUrl()%>" alt="" style="float:left;padding-right:16px;">
 								<span class="price" style="font-size:12px;font-weight:300;text-transform:uppercase;"><%=product.getName()%></span>
-								<br/><span class="price" style="font-size:12px;font-weight:bold;">€ <%=product.getPrice()%></span><br/>
+								<br/><span class="price" style="font-size:12px;font-weight:bold;">€ <%=product.getPrice()%>
+								<%if(product.getHighlighted()!=0){ %><img src="images/button.png" style="width:12px;"> HIGHLIGHTED <%} %></span><br/>
 								<span class="price" style="font-size:19px;font-weight:300;text-transform:uppercase;color:#aea5ca"><%=product.getCategory().getName()%></span>
 							<br/>
 							<br/>
@@ -190,7 +196,7 @@ Choose a section. You can also browse a shop normally and click "Edit" button ad
 							</form>
 							</li>
 				<%}} %>
-				</ul>
+				</ul><br/>&nbsp;<br/>
                 </div>
 
 
@@ -239,6 +245,7 @@ Choose a section. You can also browse a shop normally and click "Edit" button ad
 				</select><br/>&nbsp;<br/>
 				</td></tr>
 	<tr><td><b>Image URL:</b></td> <td>	<input id="imageUrl" name="imageUrl" style="width:350px;margin-left:2px;" type="text" value="<%=product.getImageUrl() %>"/><br/></td></tr>
+	<tr><td><b><br/>Highlighted: </b></td> <td><br/>	<input id="highlighted" name="highlighted" type="checkbox" value="yes" <%if(product.getHighlighted()!=0){ %> checked<%} %>/><br/></td></tr>
 	
 			
 	<tr><td> </td> <td><br/><input type="button" class="admin-button" value="Save" onClick="checkPass();submitForm();" /><br/></td></tr>

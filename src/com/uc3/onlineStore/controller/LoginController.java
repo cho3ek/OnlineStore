@@ -223,6 +223,10 @@ public class LoginController extends HttpServlet {
 						String description = request.getParameter("description");
 						String categoryId = request.getParameter("category");
 						String imageUrl = request.getParameter("imageUrl");
+						String highlighted = request.getParameter("highlighted");
+						if(highlighted == null || highlighted.equals("")){
+							highlighted = "no";
+						}
 						Category category = null;
 
 						emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
@@ -254,7 +258,11 @@ public class LoginController extends HttpServlet {
 							p.setCategory(category);
 							p.setDescription(description);
 							p.setImageUrl(imageUrl);
-							
+							if(highlighted.equals("yes")){
+								p.setHighlighted((byte)1);
+							} else {
+								p.setHighlighted((byte)0);
+							}
 							et.commit();
 							em.close();
 						}
@@ -313,6 +321,10 @@ public class LoginController extends HttpServlet {
 						String description = request.getParameter("description");
 						String categoryId = request.getParameter("category");
 						String imageUrl = request.getParameter("imageUrl");
+						String highlighted = request.getParameter("highlighted");
+						if(highlighted == null || highlighted.equals("")){
+							highlighted = "no";
+						}
 						Category category = null;
 
 						emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
@@ -349,6 +361,11 @@ public class LoginController extends HttpServlet {
 						p.setCategory(category);
 						p.setDescription(description);
 						p.setImageUrl(imageUrl);
+						if(highlighted.equals("yes")){
+							p.setHighlighted((byte)1);
+						} else {
+							p.setHighlighted((byte)0);
+						}
 						
 						em.persist(p);
 						et.commit();
