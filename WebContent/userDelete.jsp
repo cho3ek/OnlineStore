@@ -28,8 +28,8 @@
 	<input type="submit" value="Go back to your account" class="admin-button" />
 	</form></td><td>
 	<form action="login" method="get" style="margin-left:30px;">
-	<input type="hidden" name="action" value="categoryEdit"/>
-	<input type="submit" value="Go back to categories edit" class="admin-button" />
+	<input type="hidden" name="action" value="usersEdit"/>
+	<input type="submit" value="Go back to users list" class="admin-button" />
 	</form></td>
 	<td>
 	<td>
@@ -42,27 +42,21 @@
 	
 
 
-<!--IF WE HAVE A CATEGORY CHOSEN WE EDIT IT
+<!--IF WE HAVE A USER CHOSEN WE EDIT IT
  -->
 <br/>&nbsp;<br/>&nbsp;<br/>&nbsp;<br/>
+<% user = (User)request.getAttribute("user");
+if(user.getName() != null) {%>
 
-<%if(category.getName() != null) {%>
 
 
 
-<% 
-if((Integer)request.getAttribute("numberOfProducts") > 0 ) { %>
-			<img src="images/becareful.png" style="width:150px;float:left;margin-right:30px;" alt=""/>
-			<h3>We're sorry. You cannot delete this category.</h3> <br/><h4>
-			There are still <b><%=(Integer)request.getAttribute("numberOfProducts")%> products</b> in this category.<br/>
-			You must delete them first or change their categories.</h4>
-	<%} else {%>
 
 
 
 <table style="padding:10px;background-color:#fafafa">
 <tr><td style="width:230px"><img src="images/becareful.png" style="width:150px;" alt="" /></td><td>
-<h3>ARE YOU SURE U WANT TO DELETE THIS CATEGORY?</h3>
+<h3>ARE YOU SURE U WANT TO DELETE THIS USER?</h3>
 <br/>
 
 	
@@ -70,18 +64,18 @@ if((Integer)request.getAttribute("numberOfProducts") > 0 ) { %>
 
 <table>
 <tr>
-<td>Category name: <span style="font-weight:300;text-transform:uppercase;"><b><%=category.getName() %></b></span><br/>
-Section name: <span style="font-weight:300;text-transform:uppercase;"><b><%=category.getSection().getName() %></b></span><br/>
+<td>User: <span style="font-weight:300;text-transform:uppercase;"><b><%=user.getName() %> <%=user.getSurname() %></b></span><br/>
+Email: <span style="font-weight:300;text-transform:uppercase;"><b><%=user.getEmail() %></b></span><br/>
 -
 </span><br/></td>
 <td>
-<form action="login?action=deletedCategory" method="post" id="deleteCategory" style="margin-left:30px;">
-	<input type="hidden" name="actionPost" value="deleteCategory" />
-	<input type="hidden" name="id" value="<%=category.getIdCategory() %>" />
+<form action="login?action=userDelete" method="post" id="userDelete" style="margin-left:30px;">
+	<input type="hidden" name="actionPost" value="userDelete" />
+	<input type="hidden" name="id" value="<%=user.getIdUser() %>" />
 	<input type="submit" class="admin-button" value="YES, delete it" />
 	</form></td><td>
-	<form action="login" method="get" id="deleteProduct" style="margin-left:30px;">
-	<input type="hidden" name="action" value="editProduct" />
+	<form action="login" method="get" id="usersEdit" style="margin-left:30px;">
+	<input type="hidden" name="action" value="usersEdit" />
 	<input type="submit" class="admin-button" value="NO, go back" />
 	</form></td>
 	</tr>
@@ -94,7 +88,7 @@ Section name: <span style="font-weight:300;text-transform:uppercase;"><b><%=cate
 </td></tr></table></p>
 
 
-<% }}	}}catch(Exception e){}%>
+<% }	}}catch(Exception e){}%>
 
 
 <jsp:include page="footer.jsp" />

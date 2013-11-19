@@ -923,6 +923,10 @@ box1,
 .categories {
 	border-collapse:collapse;
 }
+
+.categories td{
+	padding:15px;
+}
 .categories tr:hover{
 border:0px;
 	background-color:#f1f1f1;

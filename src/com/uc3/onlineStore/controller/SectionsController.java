@@ -136,7 +136,7 @@ public class SectionsController extends HttpServlet {
 	public void getListOfAllCategories(HttpServletRequest request) {
 		query = em
 				.createQuery("SELECT c FROM Category c WHERE c.section=(SELECT s FROM Section s WHERE s.url='"
-						+ url + "')");
+						+ url + "') ORDER BY c.name");
 		results = query.getResultList();
 		int index = 1;
 		if (results.size() < 1) {
@@ -151,7 +151,7 @@ public class SectionsController extends HttpServlet {
 			}
 			maxIdobjectQuery = em
 					.createQuery("SELECT c FROM Category c WHERE c.section.idSection="
-							+ newId);
+							+ newId +" ORDER BY c.name");
 			results = maxIdobjectQuery.getResultList();
 			request.setAttribute("categories", results);
 		} else {

@@ -34,13 +34,21 @@
 		<input type="hidden" name="action" value="productEdit"/>
 		<input type="submit" value="Go back to list of products" class="admin-button" />
 		</form></td>
+	<%} else {%>
+	<td>
+	<form action="login" method="get" style="margin-left:30px;">
+	<input type="hidden" name="action" value="productAdd"/>
+	<input type="submit" value="Add new product" class="admin-button" />
+	</form></td>
 	<%} %>
 	<td>
 	<form action="login" method="get" style="margin-left:30px;">
 	<input type="hidden" name="action" value="logout"/>
 	<input type="submit" value="Logout" class="admin-button" />
-	</form></td></tr></table>
+	</form></td></tr>
 	
+	
+	</table>
 	
 	
 	

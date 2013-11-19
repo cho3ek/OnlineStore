@@ -71,11 +71,31 @@ public class LoginController extends HttpServlet {
 			else if (request.getParameter("action").equals("categoryEdit")) {
 				url = "categoryEdit";
 				getCategoriesForAdminEdit(request);
+				getCategoryForAdminEdit(request);
+				getSectionsForAdminEdit(request);
+			}
+			else if (request.getParameter("action").equals("categoryAdd")) {
+				url = "categoryAdd";
+				getCategoriesForAdminEdit(request);
+				getSectionsForAdminEdit(request);
 			}
 			else if (request.getParameter("action").equals("categoryDelete")) {
 				url = "categoryDelete";
 				getCategoryForAdminEdit(request);
 				getNumberOfProductsForAdminEdit(request);
+			}
+			else if (request.getParameter("action").equals("productAdd")) {
+				url = "productAdd";
+				getCategoriesForAdminEdit(request);
+			}
+			else if (request.getParameter("action").equals("usersEdit")) {
+				url = "usersEdit";
+				getUsersForAdminEdit(request);
+			}
+
+			else if (request.getParameter("action").equals("userDelete")) {
+				url = "userDelete";
+				getUserForAdminEdit(request);
 			}
 		}
 		
@@ -240,6 +260,150 @@ public class LoginController extends HttpServlet {
 						}
 					}
 				}
+				
+				
+				
+				
+				/* SAVING EDITED CATEGORY */
+				if (request.getParameter("actionPost") != null) {
+					if (request.getParameter("actionPost").equals("categoryEdit")) {
+						String name = request.getParameter("name");
+						String sectionId = request.getParameter("section");
+						Section sect = null;
+
+						emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
+						em = emf.createEntityManager();
+						query = em.createQuery("SELECT s FROM Section s WHERE s.idSection="+sectionId);
+						results = query.getResultList();
+						if (results == null) {
+							request.setAttribute("categories", "");
+						} else {
+							for(Object current: results){
+								sect = (Section)current;
+							}
+						}
+						em.close();
+						em = emf.createEntityManager();
+						
+						EntityTransaction et = em.getTransaction();
+						et.begin();
+						Query categoryEdit = em
+								.createQuery("SELECT c FROM Category c WHERE c.idCategory="
+										+ request.getParameter("id"));
+						results = categoryEdit.getResultList();
+						for (Object current : results) {
+							Category c = (Category)current;
+							c.setName(name);
+							c.setSection(sect);
+							
+							et.commit();
+							em.close();
+						}
+					}
+				}
+				
+				
+				
+				/* CREATING NEW PRODUCT */
+				if (request.getParameter("actionPost") != null) {
+					if (request.getParameter("actionPost").equals("productAdd")) {
+						String name = request.getParameter("name");
+						String price = request.getParameter("price");
+						String stock = request.getParameter("stock");
+						String description = request.getParameter("description");
+						String categoryId = request.getParameter("category");
+						String imageUrl = request.getParameter("imageUrl");
+						Category category = null;
+
+						emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
+						em = emf.createEntityManager();
+						query = em.createQuery("SELECT c FROM Category c WHERE c.idCategory="+categoryId);
+						results = query.getResultList();
+						if (results == null) {
+							request.setAttribute("categories", "");
+						} else {
+							for(Object pr: results){
+								category = (Category)pr;
+							}
+						}
+						em.close();
+						em = emf.createEntityManager();
+						EntityTransaction et = em.getTransaction();
+						et.begin();
+						
+						Query maxId = em
+								.createQuery("SELECT MAX(p.idProduct) FROM Product p");
+						results = maxId.getResultList();
+						int newId = 0;
+						Iterator it = results.iterator();
+						while (it.hasNext()) {
+							newId = ((Integer) it.next()).intValue();
+						}
+
+						Product p = new Product();
+						p.setIdProduct(newId + 1);
+						p.setName(name);
+						BigDecimal price2 = new BigDecimal(price);
+						p.setPrice(price2);
+						p.setStock(Integer.parseInt(stock));
+						p.setCategory(category);
+						p.setDescription(description);
+						p.setImageUrl(imageUrl);
+						
+						em.persist(p);
+						et.commit();
+						em.close();
+						url = "login";
+					}
+				}
+				
+				
+				
+				
+				/* CREATING NEW CATEGORY */
+				if (request.getParameter("actionPost") != null) {
+					if (request.getParameter("actionPost").equals("categoryAdd")) {
+						String name = request.getParameter("name");
+						String sectionId = request.getParameter("section");
+						Section sect = null;
+
+						emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
+						em = emf.createEntityManager();
+						query = em.createQuery("SELECT s FROM Section s WHERE s.idSection="+sectionId);
+						results = query.getResultList();
+						
+							for(Object current: results){
+								sect = (Section)current;
+							}
+						
+						em.close();
+						em = emf.createEntityManager();
+						EntityTransaction et = em.getTransaction();
+						et.begin();
+						
+						Query maxId = em
+								.createQuery("SELECT MAX(c.idCategory) FROM Category c");
+						results = maxId.getResultList();
+						int newId = 0;
+						Iterator it = results.iterator();
+						while (it.hasNext()) {
+							newId = ((Integer) it.next()).intValue();
+						}
+
+						Category c = new Category();
+						c.setIdCategory(newId + 1);
+						c.setName(name);
+						c.setSection(sect);
+						
+						em.persist(c);
+						et.commit();
+						em.close();
+						url = "login";
+					}
+				}
+				
+				
+				
 
 				/* CREATING NEW USER */
 				if (request.getParameter("action") != null) {
@@ -291,7 +455,7 @@ public class LoginController extends HttpServlet {
 				
 				
 				/* DELETING A PRODUCT */
-				if (request.getParameter("action") != null) {
+				if (request.getParameter("actionPost") != null) {
 					if (request.getParameter("actionPost").equals("deleteProduct")) {
 
 						EntityTransaction et = em.getTransaction();
@@ -332,6 +496,26 @@ public class LoginController extends HttpServlet {
 				
 				
 				
+				/* DELETING AN USER */
+				if (request.getParameter("action") != null) {
+					if (request.getParameter("actionPost").equals("userDelete")) {
+
+						EntityTransaction et = em.getTransaction();
+						et.begin();
+						Query deleteUser = em
+						.createQuery("SELECT u FROM User u WHERE u.idUser="
+								+ request.getParameter("id"));
+						results = deleteUser.getResultList();
+						for (Object current : results) {
+							User u = (User) current;
+							em.remove(u);
+						}
+						et.commit();
+						em.close();
+					}
+				}
+				
+				
 				
 			}
 		}
@@ -349,6 +533,14 @@ public class LoginController extends HttpServlet {
 		}
 
 	}
+	
+
+	
+	/*    ----------------   */
+	/*    FUNCTIONS TO USE   */
+	/*    ----------------   */
+	
+	
 	
 	/* GET ALL PRODUCTS (FOR ADMIN EDIT) */
 	public void getAllProductsForAdminEdit(HttpServletRequest request) {
@@ -385,10 +577,6 @@ public class LoginController extends HttpServlet {
 	
 	
 	
-	/*    ----------------   */
-	/*    FUNCTIONS TO USE   */
-	/*    ----------------   */
-	
 	/* GET CATEOGORIES (FOR ADMIN PRODUCT EDIT) */
 	public void getCategoriesForAdminEdit(HttpServletRequest request) {
 		    EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
@@ -403,6 +591,40 @@ public class LoginController extends HttpServlet {
 			em.close();
 		}
 	
+	
+	/* GET SECTIONS (FOR ADMIN CATEOGRY EDIT) */
+	public void getSectionsForAdminEdit(HttpServletRequest request) {
+		    EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
+			EntityManager em = emf.createEntityManager();
+			query = em.createQuery("SELECT s FROM Section s ORDER BY s.name");
+			results = query.getResultList();
+			if (results == null) {
+				request.setAttribute("sections", "");
+			} else {
+				request.setAttribute("sections", results);
+			}
+			em.close();
+		}
+	
+	
+	
+	/* GET USERS (FOR ADMIN CATEOGRY EDIT) */
+	public void getUsersForAdminEdit(HttpServletRequest request) {
+		    EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
+			EntityManager em = emf.createEntityManager();
+			query = em.createQuery("SELECT u FROM User u ORDER BY u.email");
+			results = query.getResultList();
+			if (results == null) {
+				request.setAttribute("users", "");
+			} else {
+				request.setAttribute("users", results);
+			}
+			em.close();
+		}
+	
+	
+	
+	
 	/* GET CATEGORY TO EDIT (FOR ADMIN) */
 	public void getCategoryForAdminEdit(HttpServletRequest request) {
 		if (request.getParameter("id") != null) {
@@ -416,6 +638,27 @@ public class LoginController extends HttpServlet {
 			} else {
 				for (Object cat : results) {
 					request.setAttribute("category", (Category) cat);
+				}
+			}
+			em.close();
+		}
+	}
+	
+	
+	
+	/* GET USER TO DELETE (FOR ADMIN) */
+	public void getUserForAdminEdit(HttpServletRequest request) {
+		if (request.getParameter("id") != null) {
+			int idUserForAdminEdit = Integer.parseInt(request.getParameter("id"));
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
+			EntityManager em = emf.createEntityManager();
+			query = em.createQuery("SELECT u FROM User u WHERE u.idUser="+ idUserForAdminEdit);
+			results = query.getResultList();
+			if (results == null) {
+				request.setAttribute("user", "");
+			} else {
+				for (Object current : results) {
+					request.setAttribute("user", (User) current);
 				}
 			}
 			em.close();

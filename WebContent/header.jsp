@@ -18,9 +18,12 @@
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600,700" rel="stylesheet" type="text/css">
 
 
+ <!-- TABS FOR ADMIN EDIT PRODUCTS AND CATEGORIES -->  
    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<link href='css/tabs.css' rel='stylesheet' type='text/css'>
 
+
+   
 <script type="text/javascript">
     function sortApply(){ //js to add to url &sort=... if it doesn't exist, or change if exists
     	var url = window.location;

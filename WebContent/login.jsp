@@ -42,6 +42,13 @@
 		</p>
 	<%} }%>
 	<%if(request.getParameter("action") != null){
+		if(request.getParameter("action").equals("productAdd")){%>
+		<p style="color:green;font-size:16px;background-color: #f1f1f1;padding: 20px;">
+			<img src="images/ok.png" style="float:left;padding-right: 20px;width: 25px;">
+			<b>Product has been added!</b>
+		</p>
+	<%} }%>
+	<%if(request.getParameter("action") != null){
 		if(request.getParameter("action").equals("saveProduct")){%>
 		<p style="color:green;font-size:16px;background-color: #f1f1f1;padding: 20px;">
 			<img src="images/ok.png" style="float:left;padding-right: 20px;width: 25px;">
@@ -60,6 +67,27 @@
 		<p style="color:green;font-size:16px;background-color: #f1f1f1;padding: 20px;">
 			<img src="images/ok.png" style="float:left;padding-right: 20px;width: 25px;">
 			<b>Category has been deleted!</b>
+		</p>
+	<%} }%>
+	<%if(request.getParameter("action") != null){
+		if(request.getParameter("action").equals("categoryEdit")){%>
+		<p style="color:green;font-size:16px;background-color: #f1f1f1;padding: 20px;">
+			<img src="images/ok.png" style="float:left;padding-right: 20px;width: 25px;">
+			<b>Category has been edited!</b>
+		</p>
+	<%} }%>
+	<%if(request.getParameter("action") != null){
+		if(request.getParameter("action").equals("categoryAdd")){%>
+		<p style="color:green;font-size:16px;background-color: #f1f1f1;padding: 20px;">
+			<img src="images/ok.png" style="float:left;padding-right: 20px;width: 25px;">
+			<b>Category has been added!</b>
+		</p>
+	<%} }%>
+	<%if(request.getParameter("action") != null){
+		if(request.getParameter("action").equals("userDelete")){%>
+		<p style="color:green;font-size:16px;background-color: #f1f1f1;padding: 20px;">
+			<img src="images/ok.png" style="float:left;padding-right: 20px;width: 25px;">
+			<b>User has been deleted!</b>
 		</p>
 	<%} }%>
 	
@@ -83,6 +111,9 @@
 				<td><form action="login" method="get" style="margin-left:30px;">
 				<input type="hidden" name="action" value="categoryEdit"/>
 				<input type="submit" value="Edit categories" class="admin-button" />
+				</form></td><td><form action="login" method="get" style="margin-left:30px;">
+				<input type="hidden" name="action" value="usersEdit"/>
+				<input type="submit" value="Edit users" class="admin-button" />
 				</form></td><td>
 	<%} %>
 	
