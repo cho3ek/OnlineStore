@@ -12,8 +12,8 @@
 
    <span id="message" class="message" style="color:red;font-size:12px;"></span><br/>
 	<table>
-	<form action="login" method="post" id="newUser" style="margin-left:30px;">
-	<input type="hidden" name="action" value="newUser" />
+	<form action="login?action=newUser" method="post" id="newUser" style="margin-left:30px;">
+	<input type="hidden" name="actionPost" value="newUser" />
 	<tr><td style="width:150px;"><b>Name:</b></td><td><input type="text" id="name" name="name" value="" /></td></tr>
 	<tr><td><b>Surname:</b></td><td><input type="text" id="surname" name="surname" value=""/></td></tr>
 	<tr><td><b>Email:</b></td><td><input type="text" id="newEmail" name="newEmail" value=""/><br/>&nbsp;<br/></td></tr>

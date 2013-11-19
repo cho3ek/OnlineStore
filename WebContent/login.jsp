@@ -11,6 +11,7 @@
 
 <!-- DISPLAY MESSAGES AT THE TOP FOR NOT LOGGED IN USERS -->
 <%if(request.getAttribute("message") != null && request.getAttribute("message").equals("wrongData")){%>
+	
 	<p style="text-align:center;color:red;font-size:16px;">Wrong data! Try again!</p>
 <%} %>
 <%if(request.getParameter("action") != null){
@@ -19,10 +20,13 @@
 <%} }%>
 
 <%if(request.getParameter("action") != null){
-	if(request.getParameter("action").equals("newUser")){ %>
-	<p style="text-align:center;color:green;font-size:16px;">Thank you! Your account has been created, please log in now!</p>
-
-<%}} %>
+	 if(request.getParameter("action").equals("newUser")){ 
+	 System.out.println(request.getAttribute("message"));
+		if(request.getAttribute("message") != null && !request.getAttribute("message").equals("duplicatedEmail")){ %>
+			<p style="text-align:center;color:green;font-size:16px;">Thank you! Your account has been created, please log in now!</p>
+		<%} else {%>
+				<p style="text-align:center;color:red;font-size:16px;">Sorry!<br/><b>Your account WASN'T created</b><br/>This email already exists in database!</p>	
+<%}}} %>
 
 
 

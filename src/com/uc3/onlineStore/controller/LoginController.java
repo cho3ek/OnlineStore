@@ -406,9 +406,11 @@ public class LoginController extends HttpServlet {
 				
 
 				/* CREATING NEW USER */
-				if (request.getParameter("action") != null) {
-					if (request.getParameter("action").equals("newUser")) {
+				if (request.getParameter("actionPost") != null) {
+					if (request.getParameter("actionPost").equals("newUser")) {
 
+						emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
+						em = emf.createEntityManager();
 						EntityTransaction et = em.getTransaction();
 						et.begin();
 						String name = request.getParameter("name");
@@ -427,26 +429,41 @@ public class LoginController extends HttpServlet {
 						while (it.hasNext()) {
 							newId = ((Integer) it.next()).intValue();
 						}
-
-						User u = new User();
-						u.setIdUser(newId + 1);
-						u.setName(name);
-						u.setSurname(surname);
-						u.setEmail(newEmail);
-						u.setPhone(phone);
-						u.setAddress(address);
-
-						if (password2 != null && password3 != null
-								&& !password2.equals("")
-								&& !password3.equals("")
-								&& password2.equals(password3)
-								&& password3.equals(password2)) {
-							u.setPassword(password2);
+						
+						
+						Query checkEmail = em
+						.createQuery("SELECT u.email FROM User u");
+						results = checkEmail.getResultList();
+						it = results.iterator();
+						boolean duplicatedEmail = false;
+						while (it.hasNext()) {
+							if(newEmail.equals((String)it.next())){
+								request.setAttribute("message","duplicatedEmail");
+								duplicatedEmail = true;
+								
+							}
 						}
-						em.persist(u);
+						if(!duplicatedEmail){
+							User u = new User();
+							u.setIdUser(newId + 1);
+							u.setName(name);
+							u.setSurname(surname);
+							u.setEmail(newEmail);
+							u.setPhone(phone);
+							u.setAddress(address);
+
+							if (password2 != null && password3 != null
+									&& !password2.equals("")
+									&& !password3.equals("")
+									&& password2.equals(password3)
+									&& password3.equals(password2)) {
+								u.setPassword(password2);
+							}
+							em.persist(u);
+							request.setAttribute("message", "okData");
+						}
 						et.commit();
 						em.close();
-						request.setAttribute("message", "okData");
 						url = "login";
 					}
 				}
