@@ -1,6 +1,6 @@
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 DROP SCHEMA IF EXISTS `mydb` ;
 CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
@@ -11,11 +11,11 @@ USE `mydb` ;
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `mydb`.`Section` ;
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Section` (
-  `idSection` INT NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(45) NULL ,
-  `url` VARCHAR(45) NULL ,
-  PRIMARY KEY (`idSection`) )
+CREATE TABLE IF NOT EXISTS `mydb`.`Section` (
+  `idSection` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `url` VARCHAR(45) NULL,
+  PRIMARY KEY (`idSection`))
 ENGINE = InnoDB;
 
 
@@ -24,16 +24,16 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `mydb`.`Category` ;
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Category` (
-  `idCategory` INT NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(45) NULL ,
-  `url` VARCHAR(45) NULL ,
-  `Section_idSection` INT NOT NULL ,
-  PRIMARY KEY (`idCategory`) ,
-  INDEX `fk_Category_Section1` (`Section_idSection` ASC) ,
+CREATE TABLE IF NOT EXISTS `mydb`.`Category` (
+  `idCategory` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `url` VARCHAR(45) NULL,
+  `Section_idSection` INT NOT NULL,
+  PRIMARY KEY (`idCategory`),
+  INDEX `fk_Category_Section1` (`Section_idSection` ASC),
   CONSTRAINT `fk_Category_Section1`
-    FOREIGN KEY (`Section_idSection` )
-    REFERENCES `mydb`.`Section` (`idSection` )
+    FOREIGN KEY (`Section_idSection`)
+    REFERENCES `mydb`.`Section` (`idSection`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -44,20 +44,20 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `mydb`.`Product` ;
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Product` (
-  `idProduct` INT NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(45) NULL ,
-  `price` DECIMAL(6,2) NULL ,
-  `description` VARCHAR(2000) NULL ,
-  `stock` INT NULL ,
-  `imageUrl` VARCHAR(100) NULL ,
-  `highlighted` TINYINT(1) NULL DEFAULT false ,
-  `Category_idCategory` INT NOT NULL ,
-  PRIMARY KEY (`idProduct`) ,
-  INDEX `fk_Product_Category1` (`Category_idCategory` ASC) ,
+CREATE TABLE IF NOT EXISTS `mydb`.`Product` (
+  `idProduct` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `price` DECIMAL(6,2) NULL,
+  `description` VARCHAR(2000) NULL,
+  `stock` INT NULL,
+  `imageUrl` VARCHAR(100) NULL,
+  `highlighted` TINYINT(1) NULL DEFAULT false,
+  `Category_idCategory` INT NOT NULL,
+  PRIMARY KEY (`idProduct`),
+  INDEX `fk_Product_Category1` (`Category_idCategory` ASC),
   CONSTRAINT `fk_Product_Category1`
-    FOREIGN KEY (`Category_idCategory` )
-    REFERENCES `mydb`.`Category` (`idCategory` )
+    FOREIGN KEY (`Category_idCategory`)
+    REFERENCES `mydb`.`Category` (`idCategory`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -68,61 +68,61 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `mydb`.`User` ;
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`User` (
-  `idUser` INT NOT NULL AUTO_INCREMENT ,
-  `password` VARCHAR(45) NULL ,
-  `name` VARCHAR(45) NULL ,
-  `surname` VARCHAR(45) NULL ,
-  `email` VARCHAR(45) NULL ,
-  `phone` VARCHAR(45) NULL ,
-  `address` VARCHAR(200) NULL ,
-  `adminRights` TINYINT(1) NULL ,
-  PRIMARY KEY (`idUser`) )
+CREATE TABLE IF NOT EXISTS `mydb`.`User` (
+  `idUser` INT NOT NULL AUTO_INCREMENT,
+  `password` VARCHAR(45) NULL,
+  `name` VARCHAR(45) NULL,
+  `surname` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `phone` VARCHAR(45) NULL,
+  `address` VARCHAR(200) NULL,
+  `adminRights` TINYINT(1) NULL,
+  PRIMARY KEY (`idUser`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Order`
+-- Table `mydb`.`Ord`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Order` ;
+DROP TABLE IF EXISTS `mydb`.`Ord` ;
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Order` (
-  `idOrder` INT NOT NULL AUTO_INCREMENT ,
-  `time` DATETIME NULL ,
-  `User_idUser` INT NOT NULL ,
-  `confirmed` TINYINT(1) NULL DEFAULT false ,
-  `paid` TINYINT(1) NULL DEFAULT false ,
-  PRIMARY KEY (`idOrder`) ,
-  INDEX `fk_Session_User1` (`User_idUser` ASC) ,
+CREATE TABLE IF NOT EXISTS `mydb`.`Ord` (
+  `idOrd` INT NOT NULL AUTO_INCREMENT,
+  `time` DATETIME NULL,
+  `User_idUser` INT NOT NULL,
+  `confirmed` TINYINT(1) NULL DEFAULT false,
+  `paid` TINYINT(1) NULL DEFAULT false,
+  PRIMARY KEY (`idOrd`),
+  INDEX `fk_Session_User1` (`User_idUser` ASC),
   CONSTRAINT `fk_Session_User1`
-    FOREIGN KEY (`User_idUser` )
-    REFERENCES `mydb`.`User` (`idUser` )
+    FOREIGN KEY (`User_idUser`)
+    REFERENCES `mydb`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`OrderProducts`
+-- Table `mydb`.`Ordproduct`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`OrderProducts` ;
+DROP TABLE IF EXISTS `mydb`.`Ordproduct` ;
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`OrderProducts` (
-  `idOrderProducts` INT NOT NULL ,
-  `Order_idOrder` INT NOT NULL ,
-  `Product_idProduct` INT NOT NULL ,
-  `quantity` INT NULL ,
-  INDEX `fk_OrderProducts_Order1` (`Order_idOrder` ASC) ,
-  INDEX `fk_OrderProducts_Product1` (`Product_idProduct` ASC) ,
-  PRIMARY KEY (`idOrderProducts`) ,
+CREATE TABLE IF NOT EXISTS `mydb`.`Ordproduct` (
+  `idOrdproduct` INT NOT NULL,
+  `Order_idOrd` INT NOT NULL,
+  `Product_idProduct` INT NOT NULL,
+  `quantity` INT NULL,
+  INDEX `fk_OrderProducts_Order1` (`Order_idOrd` ASC),
+  INDEX `fk_OrderProducts_Product1` (`Product_idProduct` ASC),
+  PRIMARY KEY (`idOrdproduct`),
   CONSTRAINT `fk_OrderProducts_Order1`
-    FOREIGN KEY (`Order_idOrder` )
-    REFERENCES `mydb`.`Order` (`idOrder` )
+    FOREIGN KEY (`Order_idOrd`)
+    REFERENCES `mydb`.`Ord` (`idOrd`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_OrderProducts_Product1`
-    FOREIGN KEY (`Product_idProduct` )
-    REFERENCES `mydb`.`Product` (`idProduct` )
+    FOREIGN KEY (`Product_idProduct`)
+    REFERENCES `mydb`.`Product` (`idProduct`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -133,32 +133,29 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `mydb`.`Favourites` ;
 
-CREATE  TABLE IF NOT EXISTS `mydb`.`Favourites` (
-  `idFavourites` INT NOT NULL ,
-  `Product_idProduct` INT NOT NULL ,
-  `User_idUser` INT NOT NULL ,
-  PRIMARY KEY (`idFavourites`) ,
-  INDEX `fk_Favourites_Product1` (`Product_idProduct` ASC) ,
-  INDEX `fk_Favourites_User1` (`User_idUser` ASC) ,
+CREATE TABLE IF NOT EXISTS `mydb`.`Favourites` (
+  `idFavourites` INT NOT NULL,
+  `Product_idProduct` INT NOT NULL,
+  `User_idUser` INT NOT NULL,
+  PRIMARY KEY (`idFavourites`),
+  INDEX `fk_Favourites_Product1` (`Product_idProduct` ASC),
+  INDEX `fk_Favourites_User1` (`User_idUser` ASC),
   CONSTRAINT `fk_Favourites_Product1`
-    FOREIGN KEY (`Product_idProduct` )
-    REFERENCES `mydb`.`Product` (`idProduct` )
+    FOREIGN KEY (`Product_idProduct`)
+    REFERENCES `mydb`.`Product` (`idProduct`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Favourites_User1`
-    FOREIGN KEY (`User_idUser` )
-    REFERENCES `mydb`.`User` (`idUser` )
+    FOREIGN KEY (`User_idUser`)
+    REFERENCES `mydb`.`User` (`idUser`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-
 
 
 INSERT INTO mydb.Section VALUES(1,'Young','young');
@@ -262,8 +259,19 @@ INSERT INTO mydb.Product VALUES(79,'Jeans 3 for woman',59.99,'Extra jeans descri
 
 
 INSERT INTO mydb.User VALUES(1,'aa','John','Admin','john.admin@gmail.com','+34 666 555 444','Avenida de Atocha 42, 28045 Madrid',true);
-INSERT INTO mydb.User VALUES(2,'aa','John','Noadmin','john.noadmin@gmail.com','+34 666 555 444','Avenida de Atocha 42, 28045 Madrid',false);
-INSERT INTO mydb.Order VALUES(1,'2013-11-10 13:43:00',1,false,false);
+INSERT INTO mydb.User VALUES(2,'ss','John','Noadmin','john.noadmin@gmail.com','+34 666 555 444','Avenida de Atocha 42, 28045 Madrid',false);
+INSERT INTO mydb.Ord VALUES(1,'2013-11-10 13:43:00',1,false,false);
+INSERT INTO mydb.Ord VALUES(2,'2013-11-10 13:43:00',2,false,false);
 
-
-
+INSERT INTO mydb.Ordproduct VALUES(1,1,30,2);
+INSERT INTO mydb.Ordproduct VALUES(2,1,31,5);
+INSERT INTO mydb.Ordproduct VALUES(3,1,32,1);
+INSERT INTO mydb.Ordproduct VALUES(4,1,33,1);
+INSERT INTO mydb.Ordproduct VALUES(5,1,34,1);
+INSERT INTO mydb.Ordproduct VALUES(6,1,35,1);
+INSERT INTO mydb.Ordproduct VALUES(7,1,36,1);
+INSERT INTO mydb.Ordproduct VALUES(8,2,30,1);
+INSERT INTO mydb.Ordproduct VALUES(9,2,31,1);
+INSERT INTO mydb.Ordproduct VALUES(10,2,31,1);
+INSERT INTO mydb.Ordproduct VALUES(11,2,34,1);
+INSERT INTO mydb.Ordproduct VALUES(12,2,34,1);

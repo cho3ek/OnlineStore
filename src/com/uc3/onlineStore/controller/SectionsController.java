@@ -17,6 +17,7 @@ import java.util.*;
 
 public class SectionsController extends HttpServlet {
 
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineStore_WEB"); // CHANGE IF U HAVE DIFFERENT NAME!
 	private static final long serialVersionUID = 1L;
 	String comparator = "";
 	String mail = "";
@@ -40,10 +41,7 @@ public class SectionsController extends HttpServlet {
 		String section = "";
 		idProductGet = 0;
 		idCategoryGet = 0;
-
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("OnlineStore_WEB");
-		em = emf.createEntityManager();
+	
 
 		if (urlParsed.length >= 2)
 			section = urlParsed[1];
@@ -91,14 +89,11 @@ public class SectionsController extends HttpServlet {
 			getBestsellers(request);
 		} 
 
-		/* closing connections and using RequestDispatcher */
-		em.close();
 		url = "/" + url + ".jsp";
 		try {
-			this.getServletContext().getRequestDispatcher(url)
-					.forward(request, response);
+			this.getServletContext().getRequestDispatcher(url).forward(request, response);
 		} catch (Exception e) {
-			request.getRequestDispatcher("/index.jsp").forward(request,
+			this.getServletContext().getRequestDispatcher("/index.jsp").forward(request,
 					response);
 			return;
 		}
@@ -134,6 +129,7 @@ public class SectionsController extends HttpServlet {
 
 	/* TO GET DATA FOR LEFT SIDE MENU */
 	public void getListOfAllCategories(HttpServletRequest request) {
+		em = emf.createEntityManager();
 		query = em
 				.createQuery("SELECT c FROM Category c WHERE c.section=(SELECT s FROM Section s WHERE s.url='"
 						+ url + "') ORDER BY c.name");
@@ -157,10 +153,12 @@ public class SectionsController extends HttpServlet {
 		} else {
 			request.setAttribute("categories", results);
 		}
+		em.close();
 	}
 
 	/* TO GET ALL DATA OF CURRENT PRODUCT */
 	public void getCurrentProduct(HttpServletRequest request) {
+		em = emf.createEntityManager();
 		if (request.getParameter("id") != null) {
 			idProductGet = Integer.parseInt(request.getParameter("id"));
 		}
@@ -174,10 +172,12 @@ public class SectionsController extends HttpServlet {
 				request.setAttribute("product", (Product) prod);
 			}
 		}
+		em.close();
 	}
 
 	/* TO DISTINGUISH CURRENT CATEGORY IN LEFT MENU */
 	public void getCurrentCategory(HttpServletRequest request) {
+		em = emf.createEntityManager();
 		if (request.getParameter("catId") != null) {
 			idCategoryGet = Integer.parseInt(request.getParameter("catId"));
 		}
@@ -193,10 +193,12 @@ public class SectionsController extends HttpServlet {
 			}
 		} catch (Exception e) {
 		}
+		em.close();
 	}
 
 	/* TO SHOW ALL THE PRODUCTS IN CHOSEN CATEGORY */
 	public void getAllProductsOfCategory(HttpServletRequest request) {
+		em = emf.createEntityManager();
 		getSortComparator(request);
 		query = em
 				.createQuery("SELECT p FROM Product p WHERE p.category.idCategory="
@@ -208,10 +210,12 @@ public class SectionsController extends HttpServlet {
 		} else {
 			request.setAttribute("products", results);
 		}
+		em.close();
 	}
 
 	/* TO SHOW ALL THE PRODUCTS OF SECTION IN MAIN VIEW OF EACH SECTION */
 	public void getAllProductsOfSection(HttpServletRequest request) {
+		em = emf.createEntityManager();
 		query = em
 				.createQuery("SELECT p FROM Product p WHERE p.category.section.url='"
 						+ url + "'");
@@ -221,10 +225,12 @@ public class SectionsController extends HttpServlet {
 		} else {
 			request.setAttribute("productsSection", results);
 		}
+		em.close();
 	}
 	
 	/* TO SHOW SEARCH RESULTS */
 	public void getSearchResults(HttpServletRequest request) {
+		em = emf.createEntityManager();
 		if (request.getParameter("keyword") != null) {
 			keyword = request.getParameter("keyword");
 		}
@@ -246,24 +252,32 @@ public class SectionsController extends HttpServlet {
 			List empty = new ArrayList();
 			request.setAttribute("searchResults", empty);
 		}
+		em.close();
 	}
+	
+	
 	
 	/* TO GET BESTSELLERS */
 	public void getBestsellers(HttpServletRequest request) {
-			try {
-				
-				query = em
-						.createQuery("SELECT p FROM Product p ORDER BY p.price"); /* SONIA - CHANGE THIS TO GET BESTSELLERS FROM OrderProducts TABLE */
-				query.setMaxResults(6);
-				results = query.getResultList();
-				if (results == null) {
-					request.setAttribute("bestSellers", "");
-				} else {
-					request.setAttribute("bestSellers", (List)results);
+		em = emf.createEntityManager();
+		try {
+			List res = new ArrayList(); 
+			/* HERE I GET ONLY IDs OF BEST SELLING PRODUCTS */
+			results = em.createNativeQuery("SELECT DISTINCT Product_idProduct FROM Ordproduct GROUP BY Product_idProduct ORDER BY COUNT(Product_idProduct) DESC").setMaxResults(6).getResultList();
+			int index = 0;
+			for(Object current: results){
+					int c = (Integer)current;
+					em = emf.createEntityManager();
+					Product p = (Product)em.createQuery("SELECT p FROM Product p WHERE p.idProduct="+c).getSingleResult();
+					/* THEN I GET PRODUCTS WITH THIS ID, ADD TO NEW LIST AND SAVE AS BESTSELLETS */
+					res.add(index,p);
+					index++;
+					em.close();
 				}
+			request.setAttribute("bestSellers", (List)res);
 			} catch (Exception e) {
 			}
-		
+		    
 	}
 
 	

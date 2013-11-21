@@ -2,8 +2,10 @@
     pageEncoding="utf-8"%>
     <jsp:include page="header.jsp" />
     <%@page import="entities.Product"%>	
+    <%@page import="entities.Ordproduct"%>	
 <%@ page import="java.util.*" %>
 <jsp:useBean id="product"  scope="request" class="entities.Product" />
+<jsp:useBean id="orderproduct"  scope="request" class="entities.Ordproduct" />
 
 <div id="my-mainbody-columns" class="my-content-no-sidebar">			
 <section id="my-mainbody">

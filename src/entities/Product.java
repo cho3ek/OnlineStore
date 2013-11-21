@@ -34,9 +34,9 @@ public class Product implements Serializable {
 	@OneToMany(mappedBy="product")
 	private List<Favourite> favourites;
 
-	//bi-directional many-to-one association to Orderproduct
+	//bi-directional many-to-one association to Ordproduct
 	@OneToMany(mappedBy="product")
-	private List<Orderproduct> orderproducts;
+	private List<Ordproduct> ordproducts;
 
 	//bi-directional many-to-one association to Category
     @ManyToOne
@@ -110,12 +110,12 @@ public class Product implements Serializable {
 		this.favourites = favourites;
 	}
 	
-	public List<Orderproduct> getOrderproducts() {
-		return this.orderproducts;
+	public List<Ordproduct> getOrdproducts() {
+		return this.ordproducts;
 	}
 
-	public void setOrderproducts(List<Orderproduct> orderproducts) {
-		this.orderproducts = orderproducts;
+	public void setOrdproducts(List<Ordproduct> ordproducts) {
+		this.ordproducts = ordproducts;
 	}
 	
 	public Category getCategory() {

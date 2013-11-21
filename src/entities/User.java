@@ -35,9 +35,9 @@ public class User implements Serializable {
 	@OneToMany(mappedBy="user")
 	private List<Favourite> favourites;
 
-	//bi-directional many-to-one association to Order
+	//bi-directional many-to-one association to Ord
 	@OneToMany(mappedBy="user")
-	private List<Order> orders;
+	private List<Ord> ords;
 
     public User() {
     }
@@ -114,12 +114,12 @@ public class User implements Serializable {
 		this.favourites = favourites;
 	}
 	
-	public List<Order> getOrders() {
-		return this.orders;
+	public List<Ord> getOrds() {
+		return this.ords;
 	}
 
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
+	public void setOrds(List<Ord> ords) {
+		this.ords = ords;
 	}
 	
 }

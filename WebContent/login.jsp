@@ -11,8 +11,11 @@
 
 <!-- DISPLAY MESSAGES AT THE TOP FOR NOT LOGGED IN USERS -->
 <%if(request.getAttribute("message") != null && request.getAttribute("message").equals("wrongData")){%>
-	
 	<p style="text-align:center;color:red;font-size:16px;">Wrong data! Try again!</p>
+<%} %>
+<%if(request.getAttribute("message") != null && request.getAttribute("message").equals("notLoggedToSeeCart")){%>
+	<p style="text-align:center;color:green;font-size:16px;">You must be logged in to see your cart and add products there!<br/>
+	If you don't have an account, please <a href="/OnlineStore/registration">register</a></p>
 <%} %>
 <%if(request.getParameter("action") != null){
 	if(request.getParameter("action").equals("loggedout")){%>
@@ -21,7 +24,6 @@
 
 <%if(request.getParameter("action") != null){
 	 if(request.getParameter("action").equals("newUser")){ 
-	 System.out.println(request.getAttribute("message"));
 		if(request.getAttribute("message") != null && !request.getAttribute("message").equals("duplicatedEmail")){ %>
 			<p style="text-align:center;color:green;font-size:16px;">Thank you! Your account has been created, please log in now!</p>
 		<%} else {%>

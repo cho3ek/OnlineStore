@@ -15,6 +15,9 @@ import java.math.BigDecimal;
 import java.util.*;
 
 public class LoginController extends HttpServlet {
+	
+
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineStore_WEB"); // CHANGE IF U HAVE DIFFERENT NAME!
 	private static final long serialVersionUID = 2L;
 	private boolean debug = true;
 	HttpSession session;
@@ -124,7 +127,6 @@ public class LoginController extends HttpServlet {
 		String action = "";
 		String password = "";
 
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
 		EntityManager em = emf.createEntityManager();
 		
 		boolean isLoginSession = false;
@@ -159,6 +161,7 @@ public class LoginController extends HttpServlet {
 							session.setAttribute("login",
 									((User)user).getEmail());
 							session.setAttribute("logged", "yes");
+							session.setAttribute("userId", ((User)user).getIdUser());
 							if(((User)user).getAdminRights() != 0){
 								session.setAttribute("loggedAdmin", "yes");	
 							}
@@ -229,7 +232,6 @@ public class LoginController extends HttpServlet {
 						}
 						Category category = null;
 
-						emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
 						em = emf.createEntityManager();
 						query = em.createQuery("SELECT c FROM Category c WHERE c.idCategory="+categoryId);
 						results = query.getResultList();
@@ -279,7 +281,6 @@ public class LoginController extends HttpServlet {
 						String sectionId = request.getParameter("section");
 						Section sect = null;
 
-						emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
 						em = emf.createEntityManager();
 						query = em.createQuery("SELECT s FROM Section s WHERE s.idSection="+sectionId);
 						results = query.getResultList();
@@ -327,7 +328,6 @@ public class LoginController extends HttpServlet {
 						}
 						Category category = null;
 
-						emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
 						em = emf.createEntityManager();
 						query = em.createQuery("SELECT c FROM Category c WHERE c.idCategory="+categoryId);
 						results = query.getResultList();
@@ -384,7 +384,6 @@ public class LoginController extends HttpServlet {
 						String sectionId = request.getParameter("section");
 						Section sect = null;
 
-						emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
 						em = emf.createEntityManager();
 						query = em.createQuery("SELECT s FROM Section s WHERE s.idSection="+sectionId);
 						results = query.getResultList();
@@ -422,11 +421,10 @@ public class LoginController extends HttpServlet {
 				
 				
 
-				/* CREATING NEW USER */
+				/* CREATING NEW USER  */
 				if (request.getParameter("actionPost") != null) {
 					if (request.getParameter("actionPost").equals("newUser")) {
 
-						emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
 						em = emf.createEntityManager();
 						EntityTransaction et = em.getTransaction();
 						et.begin();
@@ -437,7 +435,8 @@ public class LoginController extends HttpServlet {
 						String address = request.getParameter("address");
 						String password2 = request.getParameter("password2");
 						String password3 = request.getParameter("password3");
-
+						User u = null;
+						
 						Query maxId = em
 								.createQuery("SELECT MAX(u.idUser) FROM User u");
 						results = maxId.getResultList();
@@ -461,7 +460,7 @@ public class LoginController extends HttpServlet {
 							}
 						}
 						if(!duplicatedEmail){
-							User u = new User();
+							u = new User();
 							u.setIdUser(newId + 1);
 							u.setName(name);
 							u.setSurname(surname);
@@ -479,6 +478,28 @@ public class LoginController extends HttpServlet {
 							em.persist(u);
 							request.setAttribute("message", "okData");
 						}
+						
+						
+						
+						
+						/* WHILE CREATING NEW USER WE HAVE TO CREATE AN UNCOMFIRMED ORDER FOR HIM 
+						 * TO MAKE HIM ABLE TO ADD PRODUCT TO CART AFTER LOGGING */
+						if(!duplicatedEmail){
+							maxId = em.createQuery("SELECT MAX(o.idOrd) FROM Ord o");
+							results = maxId.getResultList();
+							newId = 0;
+							it = results.iterator();
+							while (it.hasNext()) {
+								newId = ((Integer) it.next()).intValue();
+							}
+							Ord o = new Ord();
+							o.setIdOrd(newId +1);
+							o.setTime(new Date());
+							o.setUser(u);
+							em.persist(o);
+						}
+						
+				
 						et.commit();
 						em.close();
 						url = "login";
@@ -578,7 +599,6 @@ public class LoginController extends HttpServlet {
 	
 	/* GET ALL PRODUCTS (FOR ADMIN EDIT) */
 	public void getAllProductsForAdminEdit(HttpServletRequest request) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
 		EntityManager em = emf.createEntityManager();
 		query = em.createQuery("SELECT p FROM Product p ORDER BY p.name");
 				results = query.getResultList();
@@ -594,7 +614,6 @@ public class LoginController extends HttpServlet {
 	public void getProductForAdminEdit(HttpServletRequest request) {
 		if (request.getParameter("id") != null) {
 			int idProductForAdminEdit = Integer.parseInt(request.getParameter("id"));
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
 			EntityManager em = emf.createEntityManager();
 			query = em.createQuery("SELECT p FROM Product p WHERE p.idProduct="+ idProductForAdminEdit);
 			results = query.getResultList();
@@ -613,8 +632,7 @@ public class LoginController extends HttpServlet {
 	
 	/* GET CATEOGORIES (FOR ADMIN PRODUCT EDIT) */
 	public void getCategoriesForAdminEdit(HttpServletRequest request) {
-		    EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
-			EntityManager em = emf.createEntityManager();
+		    EntityManager em = emf.createEntityManager();
 			query = em.createQuery("SELECT c FROM Category c ORDER BY c.name");
 			results = query.getResultList();
 			if (results == null) {
@@ -628,8 +646,7 @@ public class LoginController extends HttpServlet {
 	
 	/* GET SECTIONS (FOR ADMIN CATEOGRY EDIT) */
 	public void getSectionsForAdminEdit(HttpServletRequest request) {
-		    EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
-			EntityManager em = emf.createEntityManager();
+		    EntityManager em = emf.createEntityManager();
 			query = em.createQuery("SELECT s FROM Section s ORDER BY s.name");
 			results = query.getResultList();
 			if (results == null) {
@@ -644,8 +661,7 @@ public class LoginController extends HttpServlet {
 	
 	/* GET USERS (FOR ADMIN CATEOGRY EDIT) */
 	public void getUsersForAdminEdit(HttpServletRequest request) {
-		    EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
-			EntityManager em = emf.createEntityManager();
+		    EntityManager em = emf.createEntityManager();
 			query = em.createQuery("SELECT u FROM User u ORDER BY u.email");
 			results = query.getResultList();
 			if (results == null) {
@@ -663,7 +679,6 @@ public class LoginController extends HttpServlet {
 	public void getCategoryForAdminEdit(HttpServletRequest request) {
 		if (request.getParameter("id") != null) {
 			int idCategoryForAdminEdit = Integer.parseInt(request.getParameter("id"));
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
 			EntityManager em = emf.createEntityManager();
 			query = em.createQuery("SELECT c FROM Category c WHERE c.idCategory="+ idCategoryForAdminEdit);
 			results = query.getResultList();
@@ -684,7 +699,6 @@ public class LoginController extends HttpServlet {
 	public void getUserForAdminEdit(HttpServletRequest request) {
 		if (request.getParameter("id") != null) {
 			int idUserForAdminEdit = Integer.parseInt(request.getParameter("id"));
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
 			EntityManager em = emf.createEntityManager();
 			query = em.createQuery("SELECT u FROM User u WHERE u.idUser="+ idUserForAdminEdit);
 			results = query.getResultList();
@@ -704,11 +718,9 @@ public class LoginController extends HttpServlet {
 	public void getNumberOfProductsForAdminEdit(HttpServletRequest request) {
 		if (request.getParameter("id") != null) {
 			int idCategoryForAdminEdit = Integer.parseInt(request.getParameter("id"));
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnlineStore_WEB");
 			EntityManager em = emf.createEntityManager();
 			query = em.createQuery("SELECT p FROM Product p WHERE p.category.idCategory="+ idCategoryForAdminEdit);
 			results = query.getResultList();
-			System.out.println(results.size());
 			request.setAttribute("numberOfProducts", results.size());
 			em.close();
 		}

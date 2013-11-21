@@ -7,16 +7,16 @@ import java.util.List;
 
 
 /**
- * The persistent class for the order database table.
+ * The persistent class for the ord database table.
  * 
  */
 @Entity
-@Table(name="order")
-public class Order implements Serializable {
+@Table(name="ord")
+public class Ord implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int idOrder;
+	private int idOrd;
 
 	private byte confirmed;
 
@@ -30,19 +30,19 @@ public class Order implements Serializable {
 	@JoinColumn(name="User_idUser")
 	private User user;
 
-	//bi-directional many-to-one association to Orderproduct
-	@OneToMany(mappedBy="order")
-	private List<Orderproduct> orderproducts;
+	//bi-directional many-to-one association to Ordproduct
+	@OneToMany(mappedBy="ord")
+	private List<Ordproduct> ordproducts;
 
-    public Order() {
+    public Ord() {
     }
 
-	public int getIdOrder() {
-		return this.idOrder;
+	public int getIdOrd() {
+		return this.idOrd;
 	}
 
-	public void setIdOrder(int idOrder) {
-		this.idOrder = idOrder;
+	public void setIdOrd(int idOrd) {
+		this.idOrd = idOrd;
 	}
 
 	public byte getConfirmed() {
@@ -77,12 +77,12 @@ public class Order implements Serializable {
 		this.user = user;
 	}
 	
-	public List<Orderproduct> getOrderproducts() {
-		return this.orderproducts;
+	public List<Ordproduct> getOrdproducts() {
+		return this.ordproducts;
 	}
 
-	public void setOrderproducts(List<Orderproduct> orderproducts) {
-		this.orderproducts = orderproducts;
+	public void setOrdproducts(List<Ordproduct> ordproducts) {
+		this.ordproducts = ordproducts;
 	}
 	
 }

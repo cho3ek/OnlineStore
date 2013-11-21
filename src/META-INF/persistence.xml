@@ -5,9 +5,9 @@
 		<class>entities.Category</class>
 		<class>entities.Section</class>
 		<class>entities.Product</class>
-		<class>entities.Order</class>
-		<class>entities.Orderproduct</class>
 		<class>entities.Favourite</class>
+		<class>entities.Ord</class>
+		<class>entities.Ordproduct</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mydb" />
 			<property name="javax.persistence.jdbc.user" value="root" />

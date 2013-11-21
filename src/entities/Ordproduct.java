@@ -5,38 +5,38 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the orderproducts database table.
+ * The persistent class for the ordproduct database table.
  * 
  */
 @Entity
-@Table(name="orderproducts")
-public class Orderproduct implements Serializable {
+@Table(name="ordproduct")
+public class Ordproduct implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int idOrderProducts;
+	private int idOrdproduct;
 
 	private int quantity;
 
-	//bi-directional many-to-one association to Order
+	//bi-directional many-to-one association to Ord
     @ManyToOne
-	@JoinColumn(name="Order_idOrder")
-	private Order order;
+	@JoinColumn(name="Order_idOrd")
+	private Ord ord;
 
 	//bi-directional many-to-one association to Product
     @ManyToOne
 	@JoinColumn(name="Product_idProduct")
 	private Product product;
 
-    public Orderproduct() {
+    public Ordproduct() {
     }
 
-	public int getIdOrderProducts() {
-		return this.idOrderProducts;
+	public int getIdOrdproduct() {
+		return this.idOrdproduct;
 	}
 
-	public void setIdOrderProducts(int idOrderProducts) {
-		this.idOrderProducts = idOrderProducts;
+	public void setIdOrdproduct(int idOrdproduct) {
+		this.idOrdproduct = idOrdproduct;
 	}
 
 	public int getQuantity() {
@@ -47,12 +47,12 @@ public class Orderproduct implements Serializable {
 		this.quantity = quantity;
 	}
 
-	public Order getOrder() {
-		return this.order;
+	public Ord getOrd() {
+		return this.ord;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setOrd(Ord ord) {
+		this.ord = ord;
 	}
 	
 	public Product getProduct() {

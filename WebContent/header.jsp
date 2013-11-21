@@ -88,13 +88,13 @@
 			<ul id="top-menu" class="menu my_normal">
 			<li><p style="margin: 0 10px 0 14px;color:#888;">Hello <b><%=user.getName() %> <%=user.getSurname() %></b>!</p></li>
 			<li><a href="login">Your account</a></li>
-			<li><a href="/OnlineStore/myCart">Your cart</a></li>
+			<li><a href="/OnlineStore/cart">Your cart</a></li>
 			<li><a href="login?action=logout"><b>Logout</b></a></li>
 	<% 	}}catch(Exception e){}%>
 	
 	<%if(!logged){ %>
 	<ul id="top-menu" class="menu my_normal">
-	<li><a href="/OnlineStore/myCart">Your cart</a></li>
+	<li><a href="/OnlineStore/cart">Your cart</a></li>
 	<li><a href="/OnlineStore/registration">Registration</a></li>
 	<li><a href="/OnlineStore/login">Login</a></li>
 		<%} %>
