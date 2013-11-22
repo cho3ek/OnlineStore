@@ -563,6 +563,11 @@ public class LoginController extends HttpServlet {
 						results = deleteUser.getResultList();
 						for (Object current : results) {
 							User u = (User) current;
+							/* TO CHANGE ALL ORDERS OF THE USER TO USER OF ID 1 (user name: USER DELETED) */
+							User deleted = getUser(1);
+							for(Ord o: u.getOrds()){
+								o.setUser(deleted);
+							}
 							em.remove(u);
 						}
 						et.commit();
@@ -662,7 +667,8 @@ public class LoginController extends HttpServlet {
 	/* GET USERS (FOR ADMIN CATEOGRY EDIT) */
 	public void getUsersForAdminEdit(HttpServletRequest request) {
 		    EntityManager em = emf.createEntityManager();
-			query = em.createQuery("SELECT u FROM User u ORDER BY u.email");
+		    /* USER id=1 IS CALLED "DELETED USER" SO WE DON'T DISPLAY HIM */
+			query = em.createQuery("SELECT u FROM User u WHERE u.idUser NOT IN (1) ORDER BY u.email");
 			results = query.getResultList();
 			if (results == null) {
 				request.setAttribute("users", "");
@@ -695,7 +701,7 @@ public class LoginController extends HttpServlet {
 	
 	
 	
-	/* GET USER TO DELETE (FOR ADMIN) */
+	/* GET USER (FOR ADMIN) */
 	public void getUserForAdminEdit(HttpServletRequest request) {
 		if (request.getParameter("id") != null) {
 			int idUserForAdminEdit = Integer.parseInt(request.getParameter("id"));
@@ -711,6 +717,22 @@ public class LoginController extends HttpServlet {
 			}
 			em.close();
 		}
+	}
+	
+	
+	/* GET USER WITH ID */
+	public User getUser(int id) {
+			EntityManager em = emf.createEntityManager();
+			query = em.createQuery("SELECT u FROM User u WHERE u.idUser="+ id);
+			results = query.getResultList();
+			User u = null;
+			if (results != null) {
+				for (Object current : results) {
+					u = (User)current;
+				}
+			em.close();
+			}
+			return u;
 	}
 	
 	
