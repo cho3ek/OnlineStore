@@ -47,6 +47,7 @@ public class LoginController extends HttpServlet {
 			section = urlParsed[1];
 		if (section.contains("login")) {
 			url = "login";
+			
 		} else if (section.contains("registration")) {
 			url = "registration";
 			try {
@@ -104,6 +105,7 @@ public class LoginController extends HttpServlet {
 		
 		
 
+		getFavouritesList(request);
 		url = "/" + url + ".jsp";
 		try {
 			this.getServletContext().getRequestDispatcher(url)
@@ -135,7 +137,6 @@ public class LoginController extends HttpServlet {
 
 		if (section.equals("login")) {
 			url = "login";
-
 			try {
 				if (session.getAttribute("logged").equals("yes")) {
 					isLoginSession = true;
@@ -156,6 +157,8 @@ public class LoginController extends HttpServlet {
 					List u = query.getResultList();
 					if (u != null) {
 						for (Object user : u) {
+							
+							
 							session = request.getSession();
 							session.setAttribute("user", (User)user);
 							session.setAttribute("login",
@@ -168,6 +171,8 @@ public class LoginController extends HttpServlet {
 							request.setAttribute("message", "okData");
 						}
 					}
+
+					getFavouritesList(request);
 					em.close();
 				} catch (Exception e) {
 				}
@@ -420,8 +425,90 @@ public class LoginController extends HttpServlet {
 				
 				
 				
+				
+				
+				/* ADDING PRODUCT TO FAVOURITES LIST */
+				if (request.getParameter("actionPost") != null) {
+					if (request.getParameter("actionPost").equals("favouriteAdd")) {
+						String idProduct = request.getParameter("idProduct");
+						int idUser = ((User)session.getAttribute("user")).getIdUser();
+						Product prod = null;
+						User us = null;
+						
+						em = emf.createEntityManager();
+						query = em.createQuery("SELECT p FROM Product p WHERE p.idProduct="+idProduct);
+						results = query.getResultList();
+							for(Object current: results){
+								prod = (Product)current;
+							}
+						em.close();
+						
+						em = emf.createEntityManager();
+						query = em.createQuery("SELECT u FROM User u WHERE u.idUser="+idUser);
+						results = query.getResultList();
+							for(Object current: results){
+								us = (User)current;
+							}
+						em.close();
+						
 
-				/* CREATING NEW USER  */
+						em = emf.createEntityManager();
+						Query maxId = em.createQuery("SELECT MAX(f.idFavourites) FROM Favourite f");
+						results = maxId.getResultList();
+						int newId = 0;
+						Iterator it = results.iterator();
+						while (it.hasNext()) {
+							newId = ((Integer) it.next()).intValue();
+						}
+						em.close();
+						
+						
+						em = emf.createEntityManager();
+						Query countFavourites = em.createQuery("SELECT COUNT(f) FROM Favourite f WHERE f.user.idUser="+idUser);
+						results = countFavourites.getResultList();
+						int numberOfFavourites = 0;
+						for (Object i : results) {
+							Long temp = (Long)i;
+							numberOfFavourites = temp.intValue();
+						}
+						em.close();
+						
+						boolean productAlreadyExistsInFavouritesList = false;
+						em = emf.createEntityManager();
+						query = em.createQuery("SELECT f FROM Favourite f WHERE f.product.idProduct="+idProduct+" AND f.user.idUser="+idUser);
+						results = query.getResultList();
+						if (results!=null){
+							for(Object current: results){
+								productAlreadyExistsInFavouritesList = true;
+								request.setAttribute("message","productAlreadyExistsInFavouritesList");
+							}
+						}
+						em.close();
+						
+						if(numberOfFavourites<=10 && !productAlreadyExistsInFavouritesList){
+							em = emf.createEntityManager();
+							EntityTransaction et = em.getTransaction();
+							et.begin();
+							Favourite f = new Favourite();
+							f.setIdFavourites(newId + 1);
+							f.setProduct(prod);
+							f.setUser(us);
+							em.persist(f);
+							et.commit();
+							em.close();
+							request.setAttribute("message", "favouriteOK");
+							
+						} else if(!productAlreadyExistsInFavouritesList){
+							request.setAttribute("message", "favouriteMoreThan10");
+						}
+						url = "login";
+					}
+				}
+				
+				
+				
+
+				/* CREATING NEW USER - REGISTRATION  */
 				if (request.getParameter("actionPost") != null) {
 					if (request.getParameter("actionPost").equals("newUser")) {
 
@@ -512,7 +599,7 @@ public class LoginController extends HttpServlet {
 				/* DELETING A PRODUCT */
 				if (request.getParameter("actionPost") != null) {
 					if (request.getParameter("actionPost").equals("deleteProduct")) {
-
+						Product p = null;
 						EntityTransaction et = em.getTransaction();
 						et.begin();
 						Query deleteProduct = em
@@ -520,9 +607,13 @@ public class LoginController extends HttpServlet {
 								+ request.getParameter("id"));
 						results = deleteProduct.getResultList();
 						for (Object pr : results) {
-							Product p = (Product) pr;
-							em.remove(p);
+							p = (Product) pr;
 						}
+						for (Object curr : p.getFavourites()) {
+							Favourite f = (Favourite) curr;
+							em.remove(f);
+						}
+						em.remove(p);
 						et.commit();
 						em.close();
 					}
@@ -531,7 +622,7 @@ public class LoginController extends HttpServlet {
 				
 				
 				/* DELETING A CATEGORY */
-				if (request.getParameter("action") != null) {
+				if (request.getParameter("actionPost") != null) {
 					if (request.getParameter("actionPost").equals("deleteCategory")) {
 
 						EntityTransaction et = em.getTransaction();
@@ -550,9 +641,28 @@ public class LoginController extends HttpServlet {
 				}
 				
 				
+				/* DELETING A PRODUCT FROM FAVOURITES LIST */
+				if (request.getParameter("actionPost") != null) {
+					if (request.getParameter("actionPost").equals("deleteFavourite")) {
+						EntityTransaction et = em.getTransaction();
+						et.begin();
+						Query deleteFavourite = em
+						.createQuery("SELECT f FROM Favourite f WHERE f.idFavourites="
+								+ request.getParameter("id"));
+						results = deleteFavourite.getResultList();
+						for (Object fav : results) {
+							Favourite f = (Favourite) fav;
+							em.remove(f);
+						}
+						et.commit();
+						em.close();
+					}
+				}
+				
+				
 				
 				/* DELETING AN USER */
-				if (request.getParameter("action") != null) {
+				if (request.getParameter("actionPost") != null) {
 					if (request.getParameter("actionPost").equals("userDelete")) {
 
 						EntityTransaction et = em.getTransaction();
@@ -568,6 +678,10 @@ public class LoginController extends HttpServlet {
 							for(Ord o: u.getOrds()){
 								o.setUser(deleted);
 							}
+							/* TO CHANGE ALL FAVOURITES LIST OF THE USER TO USER OF ID 1 (user name: USER DELETED) */
+							for(Favourite f: u.getFavourites()){
+								f.setUser(deleted);
+							}
 							em.remove(u);
 						}
 						et.commit();
@@ -580,6 +694,8 @@ public class LoginController extends HttpServlet {
 			}
 		}
 		
+
+		getFavouritesList(request);
 		url = "/" + url + ".jsp";
 		try {
 			this.getServletContext().getRequestDispatcher(url)
@@ -747,5 +863,20 @@ public class LoginController extends HttpServlet {
 			em.close();
 		}
 	}
+	
+	
+	/* TO GET FAVOURITES LIST */
+	public void getFavouritesList(HttpServletRequest request) {
+		EntityManager em = emf.createEntityManager();
+		try {
+			int idUser = ((User)session.getAttribute("user")).getIdUser();
+			results = em.createQuery("SELECT f FROM Favourite f WHERE f.user.idUser="+idUser).setMaxResults(10).getResultList();
+			em.close();
+			request.setAttribute("favouritesList", (List)results);
+			
+			} catch (Exception e) {System.out.println(e.getMessage());
+			}
+	}
+
 	
 }

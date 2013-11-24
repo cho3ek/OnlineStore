@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>			
 <%@page import="entities.User"%>	
+<%@page import="entities.Favourite"%>	
 <%@ page import="java.util.*" %>
+<jsp:useBean id="favourite" scope="request" class="entities.Favourite" />
 <jsp:useBean id="user" scope="request" class="entities.User" />
 
 
@@ -96,7 +98,32 @@
 			<b>User has been deleted!</b>
 		</p>
 	<%} }%>
-	
+	<%if(request.getParameter("action") != null){
+		if(request.getParameter("action").equals("favouriteAdd") && !request.getAttribute("message").equals("favouriteMoreThan10") && !request.getAttribute("message").equals("productAlreadyExistsInFavouritesList")){%>
+		<p style="color:green;font-size:16px;background-color: #f1f1f1;padding: 20px;">
+			<img src="images/ok.png" style="float:left;padding-right: 20px;width: 25px;">
+			<b>Product has been added to your favourites list!</b>
+		</p>
+	<%} }%>
+	<%if(request.getParameter("action") != null){
+		if(request.getParameter("action").equals("favouriteDeleted")){%>
+		<p style="color:green;font-size:16px;background-color: #f1f1f1;padding: 20px;">
+			<img src="images/ok.png" style="float:left;padding-right: 20px;width: 25px;">
+			<b>Product has been deleted from your favourites list!</b>
+		</p>
+	<%} }%>
+	<%if(request.getAttribute("message") != null && request.getAttribute("message").equals("favouriteMoreThan10")){%>
+	<p style="color:red;font-size:16px;background-color: #f1f1f1;padding: 20px;">
+			<img src="images/becareful.png" style="float:left;padding-right: 20px;width: 25px;">
+			<b>Sorry, you can add only 10 products to favourites list.</b>
+		</p>
+	<%} %>
+	<%if(request.getAttribute("message") != null && request.getAttribute("message").equals("productAlreadyExistsInFavouritesList")){%>
+	<p style="color:red;font-size:16px;background-color: #f1f1f1;padding: 20px;">
+			<img src="images/becareful.png" style="float:left;padding-right: 20px;width: 25px;">
+			<b>Sorry, this product already exists in your list!</b>
+		</p>
+	<%} %>
 
 <!-- USER DATA WITH FORM CONTAING USER ACTIONS TO DO DEPENDING ON IF USER IS ADMIN OR NOT -->
 	<table>
@@ -144,7 +171,36 @@
 	<u>Your list of favourites products:</u>
 	</p>
 	
-<% 	}}catch(Exception e){}%>
+	<table style="border-collapse:collapse;">
+	<%if(request.getAttribute("favouritesList") != null){
+		List favouritesList = (List)request.getAttribute("favouritesList");
+		if(favouritesList.toString().equals("[]")){%>
+			<p style="color:green;font-size:18px;">Your favourites list is empty. <b>Add something!</b></p>
+		<%}else{
+		int i=0;
+		for(Object current: favouritesList){
+		favourite = (Favourite)current; %>
+		
+	
+	<tr<%if(i%2==0){%> style="background-color:#f3f3f3;"<%}else{%> style="background-color:#f9f9f9;"<%}i++;%>>
+	<td style="vertical-align:middle;"><img src="<%=favourite.getProduct().getImageUrl() %>" alt="" style="width:60px;padding-right:20px;padding:10px;" /></td>
+	<td style="vertical-align:middle;width:250px;font-size:12px;text-transform:uppercase;"><a href="/OnlineStore/product?id=<%=favourite.getProduct().getIdProduct() %>"><%=favourite.getProduct().getName() %></a></td>
+	<td style="vertical-align:middle;width:180px;font-size:11px;text-transform:uppercase;color:#9a9a9a;"><%=favourite.getProduct().getCategory().getSection().getName() %> / <b><%=favourite.getProduct().getCategory().getName() %></b></td>
+	<td style="vertical-align:middle;width:180px;">
+			<form action="login?action=favouriteDeleted" method="post" style="margin-left:30px;">
+				<input type="hidden" name="actionPost" value="deleteFavourite"/>
+				<input type="hidden" name="id" value="<%=favourite.getIdFavourites()%>"/>
+				<input type="submit" value="Delete from this list" class="admin-button" />
+			</form>
+				</td>
+	</tr>
+	
+	<%}} %>
+	</table>
+	
+	
+	
+<% 	}}}catch(Exception e){}%>
 
 
 
@@ -162,7 +218,6 @@
     </form>
 </div>
 <%} %>
-
 
 
 <jsp:include page="footer.jsp" />

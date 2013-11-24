@@ -19,8 +19,6 @@
 
 <% if(request.getAttribute("OrdproductsInCart") != null){
 	Object c = request.getAttribute("OrdproductsInCart");
-	System.out.println(c);
-	System.out.println(c.toString());
 	if(c.toString().equals("[]")){%>
 	
 <p style="color:green;font-size:18px;">Your cart is empty now. <b>Add something!</b></p>

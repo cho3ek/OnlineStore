@@ -35,14 +35,25 @@
   
 <jsp:include page="sidemenuProduct.jsp" />
 				
-				
-				<%
-													try {
-														if (session.getAttribute("loggedAdmin").toString()
-																.equals("yes")) {
+				<% /*IF WE ARE NORMAL USER DISPLAY "ADD TO FAVOURITES LIST" BUTTON*/
+								try {
+								if (session.getAttribute("logged").toString().equals("yes")) {
 												%>
-						<!--IF WE ARE LOGGED IN AS ADMINISTRATOR - BUTTON TO EDIT PRODUCT IS DISPLAYED -->
 							<div style="position:absolute;margin-left:613px;">
+							<form action="login?action=favouriteAdd" method="post" style="float:right;">
+								<input type="hidden" name="actionPost" value="favouriteAdd" />
+								<input type="hidden" name="idProduct" value="<%=product.getIdProduct()%>" />
+								<input type="hidden" name="idUser" value="<%=user.getIdUser()%>" />
+								<input type="submit" class="admin-button" value="Add to favourites list" />
+							</form>
+							<div style="clear:both"> </div>
+							
+
+					<%try {
+					if (session.getAttribute("loggedAdmin").toString().equals("yes")) {%>
+					
+						<!--IF WE ARE LOGGED IN AS ADMINISTRATOR - BUTTON TO EDIT PRODUCT IS DISPLAYED -->
+							
 							<form action="login" method="get" style="float:right;">
 								<input type="hidden" name="action" value="productEdit" />
 								<input type="hidden" name="id" value="<%=product.getIdProduct()%>" />
@@ -54,13 +65,27 @@
 								<input type="hidden" name="id" value="<%=product.getIdProduct()%>" />
 								<input type="submit" class="admin-button" value="Delete this product" />
 							</form>
-							</div>
+							
 						<%
 							}
 							} catch (Exception e) {
 							}
 						%>
 						
+						</div>
+						<%
+							}
+							} catch (Exception e) {
+							}
+						%>
+						
+						
+				
+				
+						
+						
+						
+							
 						
 		<table>
 			<tr>
@@ -77,10 +102,12 @@
 			<small>Available sizes: <b>S, M, L, XL</b></small><br/>
 			<small>In stock: <b><%=product.getStock()%></b></small></p>
 			<br/>&nbsp;<br/>
+				<%if(product.getStock()<=0){}else{ %>
 				<form action="cart" method="post" name="addToCart">
 				<input type="hidden" name="actionPost" value="add" />
 				<input type="hidden" name="idProduct" value="<%=product.getIdProduct() %>" />
 				<%if(user.getName()!=null){ %><input type="hidden" name="idUser" value="<%=user.getIdUser() %>" /><%} %>
+				
 				<label>Quantity: </label>
 				<span class="quantity-box"> 
 					<input type="number" min="1" max="<%=product.getStock()%>" name="quantity" onblur="check(this);" value="1" style="width: 65px;"> 
@@ -89,6 +116,7 @@
 					<input type="submit" class="add-to-cart" value="Add to Cart" title="Add to Cart">
 				</span>
 				</form>
+				<%} %>
 		
 		
 				</td>
