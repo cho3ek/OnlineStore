@@ -18,9 +18,19 @@ public class Ord implements Serializable {
 	@Id
 	private int idOrd;
 
+	private String address;
+
 	private byte confirmed;
 
+	private String email;
+
+	private String name;
+
 	private byte paid;
+
+	private String phone;
+
+	private String surname;
 
     @Temporal( TemporalType.TIMESTAMP)
 	private Date time;
@@ -45,6 +55,14 @@ public class Ord implements Serializable {
 		this.idOrd = idOrd;
 	}
 
+	public String getAddress() {
+		return this.address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	public byte getConfirmed() {
 		return this.confirmed;
 	}
@@ -53,12 +71,44 @@ public class Ord implements Serializable {
 		this.confirmed = confirmed;
 	}
 
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public byte getPaid() {
 		return this.paid;
 	}
 
 	public void setPaid(byte paid) {
 		this.paid = paid;
+	}
+
+	public String getPhone() {
+		return this.phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getSurname() {
+		return this.surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
 	public Date getTime() {

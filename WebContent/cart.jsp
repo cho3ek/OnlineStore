@@ -69,7 +69,9 @@
 <br>
 <div style="float:left;margin-left:480px;">
 	<strong>Total: <h2>€ <%=request.getAttribute("totalPriceOfProductsInCart") %></h2></strong><br/>
-	<input class="admin-button" value="Proceed to checkout" />
+	<form action="checkout" method="get" id="checkout">
+	<input type="submit" class="admin-button" value="Proceed to checkout" />
+	</form>
 </div>
 
 

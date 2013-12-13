@@ -55,7 +55,15 @@
     <servlet-name>CartController</servlet-name>
     <url-pattern>/cart</url-pattern>
   </servlet-mapping>
-
+  <servlet-mapping>
+    <servlet-name>CartController</servlet-name>
+    <url-pattern>/checkout</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CartController</servlet-name>
+    <url-pattern>/confirmation</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <servlet-name>LoginController</servlet-name>
     <servlet-class>com.uc3.onlineStore.controller.LoginController</servlet-class>

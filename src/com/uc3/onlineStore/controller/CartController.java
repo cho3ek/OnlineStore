@@ -38,6 +38,18 @@ public class CartController extends HttpServlet {
     		getTotalPriceOfAllProductsInCart(request);
     		getCurrentOrderToAddProducts(request);
     	} 
+    	if (section.contains("checkout")) {
+    		url = "checkout";
+    		getAllProductsInCart(request);
+    		getTotalPriceOfAllProductsInCart(request);
+    		getCurrentOrderToAddProducts(request);
+    	} 
+    	if (section.contains("confirmation")) {
+    		url = "checkout-confirmation";
+    		getAllProductsInCart(request);
+    		getTotalPriceOfAllProductsInCart(request);
+    		getCurrentOrderToAddProducts(request);
+    	} 
     	try {
     		if(request.getSession().getAttribute("logged") == null || !request.getSession().getAttribute("logged").equals("yes")){
     			url = "login";
@@ -70,7 +82,12 @@ public class CartController extends HttpServlet {
     		boolean isLoginSession = false;
     		if (urlParsed.length >= 2)
     			section = urlParsed[1];
-    		
+    		if (section.contains("confirmation")) {
+        		url = "checkout-confirmation";
+        		getAllProductsInCart(request);
+        		getTotalPriceOfAllProductsInCart(request);
+        		getCurrentOrderToAddProducts(request);
+        	} 
     		
     		getCurrentOrderToAddProducts(request);
     		
@@ -108,6 +125,59 @@ public class CartController extends HttpServlet {
 							Ordproduct op = (Ordproduct)current;
 							em.remove(op);
 						}
+						et.commit();
+						em.close();
+        				}
+        			}
+        		
+        		
+        		/* CONFIRMING ORDER AFTER PAYMENT (change to confirmed and create new unconfirmed order) */
+        		if (request.getParameter("actionPost") != null) {
+        			if (request.getParameter("actionPost").equals("payment-confirmation")) {
+        				int idOrder = (Integer)request.getAttribute("idCurrentOrder");
+        				int userId = Integer.parseInt(request.getParameter("userId"));
+        				User u = null;
+        				
+        				em = emf.createEntityManager();
+						query = em.createQuery("SELECT u FROM User u WHERE u.idUser="+userId);
+						results = query.getResultList();
+						if (results!=null){
+							for(Object current: results){
+								u = (User)current;
+							}
+						}
+						em.close();
+						
+						
+						em = emf.createEntityManager();
+        				EntityTransaction et = em.getTransaction();
+						et.begin();
+						Query deleteProduct = em
+						.createQuery("SELECT o FROM Ord o WHERE o.idOrd="+idOrder);
+						results = deleteProduct.getResultList();
+						for (Object current : results) {
+							Ord o = (Ord)current;
+							o.setAddress(request.getParameter("address"));
+							o.setEmail(request.getParameter("email"));
+							o.setName(request.getParameter("name"));
+							o.setSurname(request.getParameter("surname"));
+							o.setPhone(request.getParameter("phone"));
+							o.setConfirmed((byte)1);
+						}
+						Query maxId = em.createQuery("SELECT MAX(o.idOrd) FROM Ord o");
+						results = maxId.getResultList();
+						int newId = 0;
+						Iterator it = results.iterator();
+						while (it.hasNext()) {
+							newId = ((Integer) it.next()).intValue();
+						}
+						Ord o = new Ord();
+						o.setIdOrd(newId + 1);
+						o.setTime(new Date());
+						o.setUser(u);
+						em.persist(o);
+						
+						
 						et.commit();
 						em.close();
         				}

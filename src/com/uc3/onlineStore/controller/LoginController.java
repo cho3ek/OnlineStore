@@ -680,7 +680,7 @@ public class LoginController extends HttpServlet {
 							}
 							/* TO CHANGE ALL FAVOURITES LIST OF THE USER TO USER OF ID 1 (user name: USER DELETED) */
 							for(Favourite f: u.getFavourites()){
-								f.setUser(deleted);
+								em.remove(f);
 							}
 							em.remove(u);
 						}

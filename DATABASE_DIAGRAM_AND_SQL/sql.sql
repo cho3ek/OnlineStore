@@ -92,6 +92,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Ord` (
   `User_idUser` INT NOT NULL,
   `confirmed` TINYINT(1) NULL DEFAULT false,
   `paid` TINYINT(1) NULL DEFAULT false,
+  `address` VARCHAR(100) NULL,
+  `phone` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `name` VARCHAR(45) NULL,
+  `surname` VARCHAR(45) NULL,
   PRIMARY KEY (`idOrd`),
   INDEX `fk_Session_User1` (`User_idUser` ASC),
   CONSTRAINT `fk_Session_User1`
@@ -261,9 +266,9 @@ INSERT INTO mydb.Product VALUES(79,'Jeans 3 for woman',59.99,'Extra jeans descri
 INSERT INTO mydb.User VALUES(1,'aa','Deleted','User','deleted.user@gmail.com','Deleted phone','Deleted address',false); /*WHILE DELETING USER ALL HIS ORDERS WILL BELONG TO THIS USER*/
 INSERT INTO mydb.User VALUES(2,'aa','John','Admin','john.admin@gmail.com','+34 666 555 444','Avenida de Atocha 42, 28045 Madrid',true);
 INSERT INTO mydb.User VALUES(3,'aa','John','Noadmin','john.noadmin@gmail.com','+34 666 555 444','Avenida de Atocha 42, 28045 Madrid',false);
-INSERT INTO mydb.Ord VALUES(1,'2013-11-10 13:43:00',1,false,false);
-INSERT INTO mydb.Ord VALUES(2,'2013-11-10 13:43:00',2,false,false);
-INSERT INTO mydb.Ord VALUES(3,'2013-11-10 13:43:00',3,false,false);
+INSERT INTO mydb.Ord VALUES(1,'2013-11-10 13:43:00',1,false,false,'','','','','');
+INSERT INTO mydb.Ord VALUES(2,'2013-11-10 13:43:00',2,false,false,'','','','','');
+INSERT INTO mydb.Ord VALUES(3,'2013-11-10 13:43:00',3,false,false,'','','','','');
 
 INSERT INTO mydb.Ordproduct VALUES(1,1,30,2);
 INSERT INTO mydb.Ordproduct VALUES(2,1,31,5);
