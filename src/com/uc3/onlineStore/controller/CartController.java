@@ -149,8 +149,25 @@ public class CartController extends HttpServlet {
 						em.close();
 						
 						
+						/* CHANGING QUANTITY IF CONFIRMED */
 						em = emf.createEntityManager();
         				EntityTransaction et = em.getTransaction();
+						et.begin();
+						Query changeQuantity = em
+						.createQuery("SELECT op FROM Ordproduct op WHERE op.ord.idOrd="+idOrder);
+						results = changeQuantity.getResultList();
+						for (Object current : results) {
+							Ordproduct op = (Ordproduct)current;
+							op.getProduct().setStock(op.getProduct().getStock()-op.getQuantity());
+						}
+						et.commit();
+						em.close();
+						
+						
+						
+						
+						em = emf.createEntityManager();
+        				et = em.getTransaction();
 						et.begin();
 						Query deleteProduct = em
 						.createQuery("SELECT o FROM Ord o WHERE o.idOrd="+idOrder);
@@ -176,7 +193,6 @@ public class CartController extends HttpServlet {
 						o.setTime(new Date());
 						o.setUser(u);
 						em.persist(o);
-						
 						
 						et.commit();
 						em.close();
